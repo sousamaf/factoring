@@ -14,5 +14,35 @@
 			<attribute name="owner.project.facets" value="jst.jsf"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/libJSF/jsf-api.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/libJSF/jsf-impl.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/libJSF/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/libJSF/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/mysql-connector-java-5.1.21/mysql-connector-java-5.1.21-bin.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/hibernate-commons-annotations-4.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/hibernate-core-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/javassist-3.15.0-GA.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/required/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/hibernate-infinispan-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/infinispan-core-5.1.6.FINAL.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/jboss-marshalling-1.3.11.GA.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/jboss-marshalling-river-1.3.11.GA.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/jgroups-3.0.11.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/rhq-pluginAnnotations-3.0.4.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/stax2-api-3.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/infinispan/woodstox-core-asl-4.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/proxool/hibernate-proxool-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/proxool/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/ehcache/ehcache-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/ehcache/hibernate-ehcache-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/ehcache/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/c3p0/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/optional/c3p0/hibernate-c3p0-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/jpa/hibernate-entitymanager-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="E:/Heitor Vinicius/4 Périodo de Sistemas/Linguagem IV/Lib/hibernate/envers/hibernate-envers-4.1.7.Final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
