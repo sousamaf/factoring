@@ -11,6 +11,6 @@ Features:
 - Controle de caixa;
 - Controle de devedores;
 - Controle de agenda;
-- Historico 
+- Historico...
 
 
