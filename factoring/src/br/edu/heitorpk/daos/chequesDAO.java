@@ -48,32 +48,25 @@ public class chequesDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=? numero=?,cpf/cnpj=? telefone=? "
-		    		+ "valor=?, recebimento=? vencimento=?"
-		            + "WHERE id_cheque=?";
+		    String query =  "UPDATE pessoa, tipo_cheque, movimentacao SET , id_cliente=? id_tipo=?, id_movimentacao=?"
+		            + "WHERE id_cliente=?, id_movimentacao, id_tipo";
 		    
 		    con.transacao();
 		    con.preparar(query);
 		    try
 		    {
-		    	  con.getPstmt().setString(1, cheq.getTitular());
-			      con.getPstmt().setInt(2, cheq.getBanco());
-			      con.getPstmt().setInt(3, cheq.getAgencia());
-			      con.getPstmt().setInt(4, cheq.getNumero_conta());
-			      con.getPstmt().setInt(5, cheq.getNumero());
-			      con.getPstmt().setInt(6, cheq.getCpnf_cnpj());
-			      con.getPstmt().setInt(7, cheq.getTelefone());
-			      con.getPstmt().setFloat(8, cheq.getValor());
-			      con.getPstmt().setLong(9, cheq.getRecebimento().getTimeInMillis());
-			      con.getPstmt().setLong(10, cheq.getVencimento().getTimeInMillis());
+			      con.getPstmt().setInt(1, cheq.getId_cliente().getId_cliente());
+			      con.getPstmt().setInt(2, cheq.getId_tipo().getId_tipo());
+			      con.getPstmt().setInt(3, cheq.getId_movimentacao().getId_movimentacao());
 		          res = con.executeUpdate();
+		          
 		      if (res = con.executeUpdate())
 		      {
 		        query = "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=? numero=?,cpf/cnpj=? telefone=? "
 			    		+ "valor=?, recebimento=? vencimento=?"
 			            + "WHERE id_cheque=?";
 		        con.preparar(query);
-		          con.getPstmt().setString(1, cheq.getTitular());
+		        con.getPstmt().setString(1, cheq.getTitular());
 			      con.getPstmt().setInt(2, cheq.getBanco());
 			      con.getPstmt().setInt(3, cheq.getAgencia());
 			      con.getPstmt().setInt(4, cheq.getNumero_conta());
@@ -83,6 +76,8 @@ public class chequesDAO {
 			      con.getPstmt().setFloat(8, cheq.getValor());
 			      con.getPstmt().setLong(9, cheq.getRecebimento().getTimeInMillis());
 			      con.getPstmt().setLong(10, cheq.getVencimento().getTimeInMillis());
+			      con.getPstmt().setInt(11, cheq.getId_cheque());
+			      
 		          res = con.executeUpdate();
 		        res = con.executeUpdate();
 		      }
@@ -103,7 +98,7 @@ public class chequesDAO {
 		  {
 		    ArrayList<cheques> res = new ArrayList<cheques>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT cheques, id_cheque FROM uf ORDER BY id_cheque";
+		    String query = "SELECT cheques, id_cheque FROM id_cheque ORDER BY id_cheque";
 
 		    con.preparar(query);
 		    try
@@ -130,7 +125,7 @@ public class chequesDAO {
 		  {
 		    ArrayList<cheques> res = new ArrayList<cheques>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT cheques, numero FROM uf ORDER BY numero";
+		    String query = "SELECT cheques, numero FROM numero ORDER BY numero";
 
 		    con.preparar(query);
 		    try

@@ -51,8 +51,8 @@ public class fiadorDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE pessoa SET email=?,login=? senha=?, id_cliente=? "
-		            + "WHERE pessoa_id_cliente=?";
+		    String query =  "UPDATE pessoa SET email=?,login=? senha=?, id_cliente=?, id_fiador "
+		            + "WHERE id_cliente=?";
 		    
 		    con.transacao();
 		    con.preparar(query);
@@ -63,18 +63,7 @@ public class fiadorDAO {
 			      con.getPstmt().setString(3, fiador.getSenha());
 			      con.getPstmt().setInt(4, fiador.getId_cliente());
 		          res = con.executeUpdate();
-		      if (res = con.executeUpdate())
-		      {
-		        query = "UPDATE pessoa SET email=?,login=? senha=?, id_cliente=? "
-		            + "WHERE pessoa_id_cliente=?";
-		        con.preparar(query);
-		        con.getPstmt().setString(1, fiador.getEmail());
-			      con.getPstmt().setString(2, fiador.getLogin());
-			      con.getPstmt().setString(3, fiador.getSenha());
-			      con.getPstmt().setInt(4, fiador.getId_cliente());
-		          res = con.executeUpdate();
-		        res = con.executeUpdate();
-		      }
+		     
 		    } catch (SQLException ex)
 		    {
 		      Logger.getLogger(fiadorDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,7 +81,7 @@ public class fiadorDAO {
 		  {
 		    ArrayList<pessoa> res = new ArrayList<pessoa>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT pessoa, email FROM uf ORDER BY email";
+		    String query = "SELECT pessoa, email FROM email ORDER BY email";
 
 		    con.preparar(query);
 		    try

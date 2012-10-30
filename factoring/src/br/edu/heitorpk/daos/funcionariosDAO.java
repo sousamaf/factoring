@@ -51,9 +51,9 @@ public class funcionariosDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE funcionarios, pessoa_fisica, pessoa SET email=?,login=? senha=?, id_cliente=?," +
-		    		" nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=?, gerente=? salario=?, data_de_entrada=?, data_de_saida=?"
-		            + "WHERE id_funcionario=?";
+		    String query =  "UPDATE pessoa_fisica, pessoa SET email=?,login=? senha=?, id_cliente=?," +
+		    		" nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=?"
+		            + "WHERE id_pessoa_fisica=?, id_cliente=?";
 		    
 		    con.transacao();
 		    con.preparar(query);
@@ -67,32 +67,19 @@ public class funcionariosDAO {
 			      con.getPstmt().setInt(6, fisica.getRg());
 			      con.getPstmt().setString(7, fisica.getSexo());
 			      con.getPstmt().setLong(8, fisica.getData_de_nascimento().getTimeInMillis());
-			      con.getPstmt().setFloat(9, fun.getSalario());
-			      con.getPstmt().setLong(10, fun.getData_de_entrada().getTimeInMillis());
-			      con.getPstmt().setLong(11, fun.getData_de_saida().getTimeInMillis());
-			      con.getPstmt().setBoolean(12, fun.isGerente());
-			      con.getPstmt().setInt(13, fun.getId_cliente());
+			      con.getPstmt().setInt(9, fun.getId_cliente());
 			      
 		          res = con.executeUpdate();
 		      if (res = con.executeUpdate())
 		      {
-		        query = "UPDATE funcionarios, pessoa_fisica, pessoa SET email=?,login=? senha=?, id_cliente=?," +
-			    		" nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=?, gerente=? salario=?, data_de_entrada=?, data_de_saida=?"
+		        query = "UPDATE funcionarios SET gerente=? salario=?, data_de_entrada=?, data_de_saida=?"
 			            + "WHERE id_funcionario=?";
 		        con.preparar(query);
-		          con.getPstmt().setString(1, p.getEmail());
-			      con.getPstmt().setString(2, p.getLogin());
-			      con.getPstmt().setString(3, p.getSenha());
-			      con.getPstmt().setString(4, fisica.getNome());
-			      con.getPstmt().setInt(5, fisica.getCpf());
-			      con.getPstmt().setInt(6, fisica.getRg());
-			      con.getPstmt().setString(7, fisica.getSexo());
-			      con.getPstmt().setLong(8, fisica.getData_de_nascimento().getTimeInMillis());
-			      con.getPstmt().setFloat(9, fun.getSalario());
-			      con.getPstmt().setLong(10, fun.getData_de_entrada().getTimeInMillis());
-			      con.getPstmt().setLong(11, fun.getData_de_saida().getTimeInMillis());
-			      con.getPstmt().setBoolean(12, fun.isGerente());
-			      con.getPstmt().setInt(13, fun.getId_cliente());
+			      con.getPstmt().setFloat(1, fun.getSalario());
+			      con.getPstmt().setLong(2, fun.getData_de_entrada().getTimeInMillis());
+			      con.getPstmt().setLong(3, fun.getData_de_saida().getTimeInMillis());
+			      con.getPstmt().setBoolean(4, fun.isGerente());
+			      con.getPstmt().setInt(5, fun.getId_funcionario());
 			      
 		          res = con.executeUpdate();
 		        res = con.executeUpdate();
@@ -114,7 +101,7 @@ public class funcionariosDAO {
 		  {
 		    ArrayList<pessoa_fisica> res = new ArrayList<pessoa_fisica>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT pessoa_fisica, cpf FROM uf ORDER BY cpf";
+		    String query = "SELECT pessoa_fisica, cpf FROM cpf ORDER BY cpf";
 
 		    con.preparar(query);
 		    try
@@ -141,7 +128,7 @@ public class funcionariosDAO {
 		  {
 		    ArrayList<funcionarios> res = new ArrayList<funcionarios>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT id_funcionario FROM uf ORDER BY id_funcionario";
+		    String query = "SELECT id_funcionario FROM id_funcionario ORDER BY id_funcionario";
 
 		    con.preparar(query);
 		    try

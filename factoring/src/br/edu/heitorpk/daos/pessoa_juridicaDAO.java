@@ -46,25 +46,23 @@ public class pessoa_juridicaDAO {
 	    }
 	  }
 
+	@SuppressWarnings("finally")
 	public boolean atualizar(pessoa_juridica pessoa_juridica)
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
 	    
-	    String query = "UPDATE pessoa_juridica SET nome_empresa=?, cpnj=?" 
-	    + "UPDATE pessoa SET email=?,login=? senha=?, id_cliente=? "
-	            + "WHERE pessoa_id_cliente=?";
+	    String query =  "UPDATE pessoa SET email=?,login=? senha=?, id_cliente=? "
+	            + "WHERE id_cliente=?";
 	    
 	    con.transacao();
 	    con.preparar(query);
 	    try
 	    {
-	    	con.getPstmt().setString(1, pessoa_juridica.getNome_empresa());
-		      con.getPstmt().setInt(2, pessoa_juridica.getCnpj());
-		      con.getPstmt().setString(3, pessoa_juridica.getEmail());
-		      con.getPstmt().setString(4, pessoa_juridica.getLogin());
-		      con.getPstmt().setString(5, pessoa_juridica.getSenha());
-		      con.getPstmt().setInt(6, pessoa_juridica.getId_cliente());
+		      con.getPstmt().setString(1, pessoa_juridica.getEmail());
+		      con.getPstmt().setString(2, pessoa_juridica.getLogin());
+		      con.getPstmt().setString(3, pessoa_juridica.getSenha());
+		      con.getPstmt().setInt(4, pessoa_juridica.getId_cliente());
 	          res = con.executeUpdate();
 	      if (res = con.executeUpdate())
 	      {
@@ -72,10 +70,6 @@ public class pessoa_juridicaDAO {
 	        con.preparar(query);
 	        con.getPstmt().setString(1, pessoa_juridica.getNome_empresa());
 		      con.getPstmt().setInt(2, pessoa_juridica.getCnpj());
-		      con.getPstmt().setString(3, pessoa_juridica.getEmail());
-		      con.getPstmt().setString(4, pessoa_juridica.getLogin());
-		      con.getPstmt().setString(5, pessoa_juridica.getSenha());
-		      con.getPstmt().setInt(6, pessoa_juridica.getId_cliente());
 	          res = con.executeUpdate();
 	        res = con.executeUpdate();
 	      }
@@ -96,7 +90,7 @@ public class pessoa_juridicaDAO {
 	  {
 	    ArrayList<pessoa_juridica> res = new ArrayList<pessoa_juridica>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT pessoa_juridica, cnjp FROM uf ORDER BY cnpj";
+	    String query = "SELECT pessoa_juridica, cnjp FROM cnpj ORDER BY cnpj";
 
 	    con.preparar(query);
 	    try

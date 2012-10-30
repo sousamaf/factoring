@@ -48,18 +48,12 @@ public class pessoa_fisicaDAO {
 	    boolean res = false;
 	    Conexao con = new Conexao();
 	    int idfisica = 0;
-	    String query ="INSERT INTO pessoa_fisica (nome, cpf, rg, sexo, data_de_nascimento)" 
-	    		+"INSERT INTO pessoa (email,login, senha) "
-	            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	    String query = "INSERT INTO pessoa (email,login, senha, id_cliente) "
+	            + "VALUES (?, ?, ?, ?,)";
 	    con.transacao();
 	    con.preparar(query, 0);
 	    try
 	    {
-	      con.getPstmt().setString(1, pessoa_fisica.getNome());
-	      con.getPstmt().setInt(2, pessoa_fisica.getCpf());
-	      con.getPstmt().setInt(3, pessoa_fisica.getRg());
-	      con.getPstmt().setString(4, pessoa_fisica.getSexo());
-	      con.getPstmt().setLong(5, pessoa_fisica.getData_de_nascimento().getTimeInMillis());
 	      con.getPstmt().setString(6, pessoa_fisica.getEmail());
 	      con.getPstmt().setString(7, pessoa_fisica.getLogin());
 	      con.getPstmt().setString(8, pessoa_fisica.getSenha());
@@ -71,8 +65,7 @@ public class pessoa_fisicaDAO {
 	        {
 	          idfisica = rs.getInt(1);
 	          query = "INSERT INTO pessoa_fisica (nome, cpf, rg, sexo, data_de_nascimento)" 
-	  	    		+"INSERT INTO pessoa (email,login, senha) "
-		            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		            + "VALUES (?, ?, ?, ?, ?,)";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, idfisica);
 	          con.getPstmt().setString(1, pessoa_fisica.getNome());
@@ -80,11 +73,7 @@ public class pessoa_fisicaDAO {
 		      con.getPstmt().setInt(3, pessoa_fisica.getRg());
 		      con.getPstmt().setString(4, pessoa_fisica.getSexo());
 		      con.getPstmt().setLong(5, pessoa_fisica.getData_de_nascimento().getTimeInMillis());
-		      con.getPstmt().setString(6, pessoa_fisica.getEmail());
-		      con.getPstmt().setString(7, pessoa_fisica.getLogin());
-		      con.getPstmt().setString(8, pessoa_fisica.getSenha());
-		      con.getPstmt().setInt(9, pessoa_fisica.getId_cliente());
-	          res = con.executeUpdate();
+		      res = con.executeUpdate();
 	        }
 	        else
 	        {

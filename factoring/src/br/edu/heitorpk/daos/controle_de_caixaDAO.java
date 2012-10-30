@@ -57,18 +57,9 @@ public class controle_de_caixaDAO {
 		    	  con.getPstmt().setLong(1, caixa.getEntrada().getTimeInMillis());
 			      con.getPstmt().setFloat(2, caixa.getSaldo());
 			      con.getPstmt().setLong(3, caixa.getSaida().getTimeInMillis());
+			      con.getPstmt().setInt(4, caixa.getId_caixa());
 		          res = con.executeUpdate();
-		      if (res = con.executeUpdate())
-		      {
-		        query = "UPDATE controle_de_caixa SET entrada=?, saldo=? saida=?"
-			            + "WHERE id_caixa=?";
-		        con.preparar(query);
-		        con.getPstmt().setLong(1, caixa.getEntrada().getTimeInMillis());
-			      con.getPstmt().setFloat(2, caixa.getSaldo());
-			      con.getPstmt().setLong(3, caixa.getSaida().getTimeInMillis());
-		          res = con.executeUpdate();
-		        res = con.executeUpdate();
-		      }
+		     
 		    } catch (SQLException ex)
 		    {
 		      Logger.getLogger(controle_de_caixaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +77,7 @@ public class controle_de_caixaDAO {
 		  {
 		    ArrayList<controle_de_caixa> res = new ArrayList<controle_de_caixa>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT controle_de_caixa, id_caixa FROM uf ORDER BY id_caixa";
+		    String query = "SELECT controle_de_caixa, id_caixa FROM id_caixa ORDER BY id_caixa";
 
 		    con.preparar(query);
 		    try

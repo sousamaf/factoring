@@ -15,7 +15,7 @@ public class status_pessoaDAO {
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM status_pessoa WHERE emprestimo_id_emprestimo=?";
+	    String query = "DELETE FROM status_pessoa WHERE id_emprestimo=?";
 
 	    con.transacao();
 	    con.preparar(query);
@@ -25,7 +25,7 @@ public class status_pessoaDAO {
 	      if (res = con.executeUpdate())
 	      {
 	       
-	          query = "DELETE FROM status_emprestimo WHERE emprestimo_id_emprestimo=?";
+	          query = "DELETE FROM status_emprestimo WHERE id_emprestimo=?";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, id.getId_emprestimo());
 	          res = con.executeUpdate();
@@ -48,20 +48,26 @@ public class status_pessoaDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE status_pessoa SET status_emprestimo=?, descricao=? "
-		            + "WHERE emprestimo_id_emprestimo=?";
+		    String query =  "UPDATE emprestimo SET comprovante_de_renda=?,vale_emprestimo=? juros_mensal=?, juros_atraso=?" +
+		    		"id_cliente, id_movimentacao"
+		            + "WHERE id_emprestimo=?";
 		    
 		    con.transacao();
 		    con.preparar(query);
 		    try
 		    {
-		    	  con.getPstmt().setString(1, status.getStatus_emprestimo());
-			      con.getPstmt().setString(2, status.getDescricao());
+		    	  con.getPstmt().setFloat(1, status.getComprovante_de_renda());
+			      con.getPstmt().setFloat(2, status.getValor_emprestimo());
+			      con.getPstmt().setFloat(3, status.getJuros_atraso());
+			      con.getPstmt().setFloat(4, status.getJuros_mensal());
+			      con.getPstmt().setInt(5, status.getId_emprestimo());
+			      con.getPstmt().setInt(6, status.getId_cliente().getId_cliente());
+			      con.getPstmt().setInt(7, status.getId_movimentacao().getId_movimentacao());
 		          res = con.executeUpdate();
 		      if (res = con.executeUpdate())
 		      {
 		        query = "UPDATE status_pessoa SET status_emprestimo=?, descricao=? "
-			            + "WHERE emprestimo_id_emprestimo=?";
+			            + "WHERE id_emprestimo=?";
 		        con.preparar(query);
 		        con.getPstmt().setString(1, status.getStatus_emprestimo());
 			      con.getPstmt().setString(2, status.getDescicao());
@@ -85,7 +91,7 @@ public class status_pessoaDAO {
 		  {
 		    ArrayList<status_pessoa> res = new ArrayList<status_pessoa>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT status_emprestimo, emprestimo_id_emprestimo FROM uf ORDER BY emprestimo_id_emprestimo";
+		    String query = "SELECT status_emprestimo, emprestimo_id_emprestimo FROM id_emprestimo ORDER BY id_emprestimo";
 
 		    con.preparar(query);
 		    try

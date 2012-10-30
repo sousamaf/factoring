@@ -59,20 +59,11 @@ public class agendar_horarioDAO {
 		    {
 		    	  con.getPstmt().setLong(1, agendar.getData().getTimeInMillis());
 			      con.getPstmt().setLong(2, agendar.getHora().getTimeInMillis());
-			      con.getPstmt().setInt(3, agendar.getId_funcionario());
+			      con.getPstmt().setInt(3, agendar.getId_cliente());
+			      con.getPstmt().setInt(3, agendar.getId_funcionario().getId_funcionario());
 			      
 		          res = con.executeUpdate();
-		      if (res = con.executeUpdate())
-		      {
-		        query = "UPDATE agendar_horario SET data=?,hora=?"
-			            + "WHERE pessoa_id_cliente=?";
-		        con.preparar(query);
-		        con.getPstmt().setLong(1, agendar.getData().getTimeInMillis());
-			      con.getPstmt().setLong(2, agendar.getHora().getTimeInMillis());
-			      con.getPstmt().setInt(3, agendar.getId_funcionario());
-		          res = con.executeUpdate();
-		        res = con.executeUpdate();
-		      }
+		      
 		    } catch (SQLException ex)
 		    {
 		      Logger.getLogger(agendar_horarioDAO.class.getName()).log(Level.SEVERE, null, ex);

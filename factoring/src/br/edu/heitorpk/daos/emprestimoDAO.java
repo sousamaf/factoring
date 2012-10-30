@@ -47,29 +47,27 @@ public class emprestimoDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE emprestimo SET comprovante_de_renda=?,vale_emprestimo=? juros_mensal=?, juros_atraso=? "
-		            + "WHERE id_emprestimo=?";
+		    String query =  "UPDATE movimentacao, pessoa SET  id_movimentacao=?, id_cliente "
+		            + "WHERE id_movimentacao=?, id_cleinte";
 		    
 		    con.transacao();
 		    con.preparar(query);
 		    try
 		    {
-		    	  con.getPstmt().setFloat(1, emprestimo.getComprovante_de_renda());
-			      con.getPstmt().setFloat(2, emprestimo.getValor_emprestimo());
-			      con.getPstmt().setFloat(3, emprestimo.getJuros_atraso());
-			      con.getPstmt().setFloat(4, emprestimo.getJuros_mensal());
-			      con.getPstmt().setInt(5, emprestimo.getId_cliente().getId_cliente());
+			      con.getPstmt().setInt(1, emprestimo.getId_movimentacao().getId_movimentacao());
+			      con.getPstmt().setInt(2, emprestimo.getId_cliente().getId_cliente());
 		          res = con.executeUpdate();
 		      if (res = con.executeUpdate())
 		      {
-		        query = "UPDATE emprestimo SET comprovante_de_renda=?,vale_emprestimo=? juros_mensal=?, juros_atraso=? "
+		        query = "UPDATE emprestimo SET comprovante_de_renda=?,vale_emprestimo=? juros_mensal=?, juros_atraso=?"
 			            + "WHERE id_emprestimo=?";
 		        con.preparar(query);
 		        con.getPstmt().setFloat(1, emprestimo.getComprovante_de_renda());
 			      con.getPstmt().setFloat(2, emprestimo.getValor_emprestimo());
 			      con.getPstmt().setFloat(3, emprestimo.getJuros_atraso());
 			      con.getPstmt().setFloat(4, emprestimo.getJuros_mensal());
-			      con.getPstmt().setInt(5, emprestimo.getId_cliente().getId_cliente());
+			      con.getPstmt().setInt(5, emprestimo.getId_emprestimo());
+			      
 		          res = con.executeUpdate();
 		        res = con.executeUpdate();
 		      }
@@ -90,7 +88,7 @@ public class emprestimoDAO {
 		  {
 		    ArrayList<emprestimo> res = new ArrayList<emprestimo>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT emprestimo, id_emprestimo FROM uf ORDER BY id_emprestimo";
+		    String query = "SELECT emprestimo, id_emprestimo FROM id_emprestimo ORDER BY id_emprestimo";
 
 		    con.preparar(query);
 		    try

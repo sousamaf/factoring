@@ -47,7 +47,7 @@ public class movimentacaoDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE movimentacao SET valor_movimentacao=?,hora_movimentacao=?  "
+		    String query =  "UPDATE movimentacao SET valor_movimentacao=?,hora_movimentacao=?, id_caixa  "
 		            + "WHERE id_movimentacao=?";
 		    
 		    con.transacao();
@@ -57,18 +57,9 @@ public class movimentacaoDAO {
 		    	  con.getPstmt().setFloat(1, mov.getValor_movimentacao());
 			      con.getPstmt().setLong(2, mov.getHora_movimentacao().getTimeInMillis());
 			      con.getPstmt().setInt(3, mov.getId_caixa().getId_caixa());
+			      con.getPstmt().setInt(4, mov.getId_movimentacao());
 		          res = con.executeUpdate();
-		      if (res = con.executeUpdate())
-		      {
-		        query = "UPDATE movimentacao SET valor_movimentacao=?,hora_movimentacao=?  "
-			            + "WHERE id_movimentacao=?";
-		        con.preparar(query);
-		        con.getPstmt().setFloat(1, mov.getValor_movimentacao());
-			      con.getPstmt().setLong(2, mov.getHora_movimentacao().getTimeInMillis());
-			      con.getPstmt().setInt(3, mov.getId_caixa().getId_caixa());
-		          res = con.executeUpdate();
-		        res = con.executeUpdate();
-		      }
+		     
 		    } catch (SQLException ex)
 		    {
 		      Logger.getLogger(movimentacaoDAO.class.getName()).log(Level.SEVERE, null, ex);

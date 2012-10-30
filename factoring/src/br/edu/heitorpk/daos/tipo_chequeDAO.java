@@ -56,16 +56,9 @@ public class tipo_chequeDAO {
 		    try
 		    {
 		    	  con.getPstmt().setString(1, tipo.getTipo());
+		    	  con.getPstmt().setInt(2, tipo.getId_tipo());
 		          res = con.executeUpdate();
-		      if (res = con.executeUpdate())
-		      {
-		        query = "UPDATE tipo_cheque SET tipo=?"
-			            + "WHERE id_tipo?";
-		        con.preparar(query);
-		        con.getPstmt().setString(1, tipo.getTipo());
-		          res = con.executeUpdate();
-		        res = con.executeUpdate();
-		      }
+		      
 		    } catch (SQLException ex)
 		    {
 		      Logger.getLogger(tipo_chequeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +76,7 @@ public class tipo_chequeDAO {
 		  {
 		    ArrayList<tipo_cheque> res = new ArrayList<tipo_cheque>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT tipo_cheque, id_tipo FROM uf ORDER BY id_tipo";
+		    String query = "SELECT tipo_cheque, id_tipo FROM id_tipo ORDER BY id_tipo";
 
 		    con.preparar(query);
 		    try

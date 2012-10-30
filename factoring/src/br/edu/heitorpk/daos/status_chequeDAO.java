@@ -15,7 +15,7 @@ public class status_chequeDAO {
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM status_cheque WHERE cheques_id_cheque=?";
+	    String query = "DELETE FROM status_cheque WHERE id_cheque=?";
 
 	    con.transacao();
 	    con.preparar(query);
@@ -25,7 +25,7 @@ public class status_chequeDAO {
 	      if (res = con.executeUpdate())
 	      {
 	       
-	          query = "DELETE FROM status_cheque WHERE cheques_id_cheque=?";
+	          query = "DELETE FROM status_cheque WHERE id_cheque=?";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, id.getId_cheque());
 	          res = con.executeUpdate();
@@ -48,20 +48,33 @@ public class status_chequeDAO {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE status_cheque SET status_cheq=?, observacao=? "
-		            + "WHERE cheques_id_cheque?";
+		    String query =  "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=? numero=?,cpf/cnpj=? telefone=? "
+		    		+ "valor=?, recebimento=? vencimento=?, id_cliente, id_tipo, id_movimentacao"
+		            + "WHERE id_cheque=?";
 		    
 		    con.transacao();
 		    con.preparar(query);
 		    try
 		    {
-		    	  con.getPstmt().setString(1, status.getStatus_cheq());
-			      con.getPstmt().setString(2, status.getObservacao());
+		    		con.getPstmt().setString(1, status.getTitular());
+			      con.getPstmt().setInt(2, status.getBanco());
+			      con.getPstmt().setInt(3, status.getAgencia());
+			      con.getPstmt().setInt(4, status.getNumero_conta());
+			      con.getPstmt().setInt(5, status.getNumero());
+			      con.getPstmt().setInt(6, status.getCpnf_cnpj());
+			      con.getPstmt().setInt(7, status.getTelefone());
+			      con.getPstmt().setFloat(8, status.getValor());
+			      con.getPstmt().setLong(9, status.getRecebimento().getTimeInMillis());
+			      con.getPstmt().setLong(10, status.getVencimento().getTimeInMillis());
+			      con.getPstmt().setInt(11, status.getId_cheque());
+			      con.getPstmt().setInt(12, status.getId_cliente().getId_cliente());
+			      con.getPstmt().setInt(13, status.getId_tipo().getId_tipo());
+			      con.getPstmt().setInt(14, status.getId_movimentacao().getId_movimentacao());
 		          res = con.executeUpdate();
 		      if (res = con.executeUpdate())
 		      {
 		        query = "UPDATE status_cheque SET status_cheq=?, observacao=? "
-			            + "WHERE cheques_id_cheque?";
+			            + "WHERE id_cheque?";
 		        con.preparar(query);
 		        con.getPstmt().setString(1, status.getStatus_cheq());
 			      con.getPstmt().setString(2, status.getObservacao());
@@ -85,7 +98,7 @@ public class status_chequeDAO {
 		  {
 		    ArrayList<status_cheque> res = new ArrayList<status_cheque>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT status_cheque, cheques_id_cheque FROM uf ORDER BY cheques_id_cheque";
+		    String query = "SELECT status_cheque, cheques_id_cheque FROM id_cheque ORDER BY id_cheque";
 
 		    con.preparar(query);
 		    try
