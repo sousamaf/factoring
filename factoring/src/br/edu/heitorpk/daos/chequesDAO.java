@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.edu.heitorpk.classes.cheques;
+import br.edu.heitorpk.classes.cidade;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class chequesDAO {
@@ -41,14 +42,49 @@ public class chequesDAO {
 	      return (res);
 	    }
 	  }
-
+	 @SuppressWarnings("finally")
+		public boolean inserir(cheques cheq)
+		  {
+		    boolean res = false;
+		    Conexao con = new Conexao();
+		    String query = "INSERT INTO cheques (titular,banco, agencia, numero_conta, numero,cpf_cnpj, telefone, valor, recebimento, vencimento" +
+		    		"id_cliente, id_movimentacao, id_tipo ) "
+		            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		    
+		    con.preparar(query);
+		    try
+		    {
+		      con.getPstmt().setString(1, cheq.getTitular());
+		      con.getPstmt().setInt(2, cheq.getBanco());
+		      con.getPstmt().setInt(3, cheq.getAgencia());
+		      con.getPstmt().setInt(4, cheq.getNumero_conta());
+		      con.getPstmt().setInt(5, cheq.getNumero());
+		      con.getPstmt().setInt(6, cheq.getCpnf_cnpj());
+		      con.getPstmt().setInt(7, cheq.getTelefone());
+		      con.getPstmt().setFloat(8, cheq.getValor());
+		      con.getPstmt().setLong(9, cheq.getRecebimento().getTimeInMillis());
+		      con.getPstmt().setLong(10, cheq.getVencimento().getTimeInMillis());
+		      con.getPstmt().setInt(11, cheq.getId_cliente().getId_cliente());
+		      con.getPstmt().setInt(12, cheq.getId_movimentacao().getId_movimentacao());
+		      con.getPstmt().setInt(13, cheq.getId_tipo().getId_tipo());
+		      res = con.executeUpdate();
+		    } catch (SQLException ex)
+		    {
+		      Logger.getLogger(cidadeDAO.class.getName()).log(Level.SEVERE, null, ex);
+		    }
+		    finally
+		    {
+		      con.fechar();
+		      return(res);
+		    }
+		  }
 		@SuppressWarnings("finally")
 		public boolean atualizar(cheques cheq)
 		  {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE pessoa, tipo_cheque, movimentacao SET , id_cliente=? id_tipo=?, id_movimentacao=?"
+		    String query =  "UPDATE pessoa, tipo_cheque, movimentacao"
 		            + "WHERE id_cliente=?, id_movimentacao, id_tipo";
 		    
 		    con.transacao();
@@ -62,7 +98,7 @@ public class chequesDAO {
 		          
 		      if (res = con.executeUpdate())
 		      {
-		        query = "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=? numero=?,cpf/cnpj=? telefone=? "
+		        query = "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=? numero=?,cpf_cnpj=? telefone=? "
 			    		+ "valor=?, recebimento=? vencimento=?"
 			            + "WHERE id_cheque=?";
 		        con.preparar(query);
@@ -98,7 +134,8 @@ public class chequesDAO {
 		  {
 		    ArrayList<cheques> res = new ArrayList<cheques>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT cheques, id_cheque FROM id_cheque ORDER BY id_cheque";
+		    String query = "SELECT id_cheque, titular, banco, agencia, numero_conta, numero, cpf_cnpj, telefone, valor, recebimento, vencimento "
+			    		+"FROM cheques";
 
 		    con.preparar(query);
 		    try
@@ -108,6 +145,16 @@ public class chequesDAO {
 		      {
 		        cheques cheq = new cheques();
 		        cheq.setId_cheque(rs.getInt("id_cheque"));
+		        cheq.setTitular(rs.getString("titular"));
+		        cheq.setBanco(rs.getInt("banco"));
+		        cheq.setAgencia(rs.getInt("agencia"));
+		        cheq.setNumero_conta(rs.getInt("numero_conta"));
+		        cheq.setNumero(rs.getInt("numero"));
+		        cheq.setCpnf_cnpj(rs.getInt("cpf_cnpj"));
+		        cheq.setTelefone(rs.getInt("telefone"));
+		        cheq.setValor(rs.getFloat("valor"));
+		        cheq.setRecebimento(rs.getDate("recebimento"));
+		        cheq.setVencimento(rs.getDate("vencimento"));
 		        res.add(cheq);
 		      }
 		    } catch (SQLException ex)
@@ -125,7 +172,8 @@ public class chequesDAO {
 		  {
 		    ArrayList<cheques> res = new ArrayList<cheques>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT cheques, numero FROM numero ORDER BY numero";
+		    String query = "SELECT titular, banco, agencia, numero_conta, numero, cpf_cnpj, telefone, valor, recebimento, vencimento "
+		    		+"FROM cheques ORDER BY numero";
 
 		    con.preparar(query);
 		    try
@@ -135,6 +183,16 @@ public class chequesDAO {
 		      {
 		        cheques cheq = new cheques();
 		        cheq.setNumero(rs.getInt("numero"));
+		        cheq.setId_cheque(rs.getInt("id_cheque"));
+		        cheq.setTitular(rs.getString("titular"));
+		        cheq.setBanco(rs.getInt("banco"));
+		        cheq.setAgencia(rs.getInt("agencia"));
+		        cheq.setNumero_conta(rs.getInt("numero_conta"));
+		        cheq.setCpnf_cnpj(rs.getInt("cpf_cnpj"));
+		        cheq.setTelefone(rs.getInt("telefone"));
+		        cheq.setValor(rs.getFloat("valor"));
+		        cheq.setRecebimento(rs.getDate("recebimento"));
+		        cheq.setVencimento(rs.getDate("vencimento"));
 		        res.add(cheq);
 		      }
 		    } catch (SQLException ex)

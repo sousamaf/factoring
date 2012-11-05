@@ -57,7 +57,6 @@ public class movimentacaoDAO {
 		    	  con.getPstmt().setFloat(1, mov.getValor_movimentacao());
 			      con.getPstmt().setLong(2, mov.getHora_movimentacao().getTimeInMillis());
 			      con.getPstmt().setInt(3, mov.getId_caixa().getId_caixa());
-			      con.getPstmt().setInt(4, mov.getId_movimentacao());
 		          res = con.executeUpdate();
 		     
 		    } catch (SQLException ex)
@@ -77,7 +76,7 @@ public class movimentacaoDAO {
 		  {
 		    ArrayList<movimentacao> res = new ArrayList<movimentacao>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT movimentacao, id_movimentacao FROM uf ORDER BY id_movimentacao";
+		    String query = "SELECT id_movimentacao, valor_movimentacao, hora_movimentacao, id_caixa FROM movimentacao";
 
 		    con.preparar(query);
 		    try
@@ -87,6 +86,9 @@ public class movimentacaoDAO {
 		      {
 		        movimentacao mov = new movimentacao();
 		        mov.setId_movimentacao(rs.getInt("id_movimentacao"));
+		        mov.setValor_movimentacao(rs.getFloat("valor_movimentacao"));
+		        mov.setHora_movimentacao(rs.getDate("hora_movimentacao"));
+		        mov.setId_caixa(rs.getInt("id_caixa"));
 		        res.add(mov);
 		      }
 		    } catch (SQLException ex)
@@ -103,7 +105,7 @@ public class movimentacaoDAO {
 			  {
 			    ArrayList<movimentacao> res = new ArrayList<movimentacao>();
 			    Conexao con = new Conexao();
-			    String query = "SELECT movimentacao, valora_movimentacao FROM uf ORDER BY valor_movimentacao";
+			    String query = "SELECT id_movimentacao, valor_movimentacao, hora_movimentacao, id_caixa FROM movimentacao ORDER BY valor_movimentacao";
 
 			    con.preparar(query);
 			    try
@@ -112,7 +114,10 @@ public class movimentacaoDAO {
 			      while (rs.next())
 			      {
 			        movimentacao mov = new movimentacao();
+			        mov.setId_movimentacao(rs.getInt("id_movimentacao"));
 			        mov.setValor_movimentacao(rs.getFloat("valor_movimentacao"));
+			        mov.setHora_movimentacao(rs.getDate("hora_movimentacao"));
+			        mov.setId_caixa(rs.getInt("id_caixa"));
 			        res.add(mov);
 			      }
 			    } catch (SQLException ex)

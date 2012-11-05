@@ -1,9 +1,9 @@
-package br.edu.heitorpk.classes;
+	package br.edu.heitorpk.classes;
 
 import java.util.Calendar;
 
 public class agendar_horario extends pessoa{
-
+	
 	private Calendar data;
 	private Calendar hora;
 	private funcionarios id_funcionario;
@@ -24,9 +24,6 @@ public class agendar_horario extends pessoa{
 	public agendar_horario(int id_cliente, String nome, String email,
 			String login, String senha, endereco cep) {
 		super(id_cliente, nome, email, login, senha, cep);
-		this.data = data;
-		this.hora = hora;
-		this.id_funcionario = id_funcionario;
 	}
 
 	public Calendar getData() {

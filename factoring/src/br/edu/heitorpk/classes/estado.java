@@ -3,7 +3,7 @@ package br.edu.heitorpk.classes;
 
 public class estado {
 private String id_uf;
-private String nome;
+private String estado;
 
 public estado() {
 	super();
@@ -12,7 +12,7 @@ public estado() {
 public estado(String id_uf, String nome) {
 	super();
 	this.id_uf = id_uf;
-	this.nome = nome;
+	this.estado = estado;
 }
 
 public String getId_uf() {
@@ -23,12 +23,12 @@ public void setId_uf(String id_uf) {
 	this.id_uf = id_uf;
 }
 
-public String getNome() {
-	return nome;
+public String getEstado() {
+	return estado;
 }
 
-public void setNome(String nome) {
-	this.nome = nome;
+public void setEstado(String estado) {
+	this.estado = estado;
 }
 
 

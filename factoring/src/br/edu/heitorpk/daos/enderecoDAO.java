@@ -17,7 +17,7 @@ public class enderecoDAO {
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM id_endereco WHERE id_endereco=?";
+	    String query = "DELETE FROM endereco WHERE id_endereco=?";
 	    
 	    con.preparar(query);
 	    try
@@ -63,6 +63,7 @@ public class enderecoDAO {
 	      con.fechar();
 	      return(res);
 	    }
+
 	  }
 	  
 	  @SuppressWarnings("finally")
@@ -102,7 +103,7 @@ public class enderecoDAO {
 	    ArrayList<endereco> res = new ArrayList<endereco>();
 	    Conexao con = new Conexao();
 	    String query = "SELECT id_endereco, cep, quadra, alameda, lote, referencia, telefone, cidade id_cidade "
-	            + "FROM endereco ORDER BY quadra";
+	            + "FROM endereco";
 	    
 	    con.preparar(query);
 	    try
@@ -142,7 +143,7 @@ public class enderecoDAO {
 	    ArrayList<endereco> res = new ArrayList<endereco>();
 	    Conexao con = new Conexao();
 	    String query = "SELECT id_endereco, cep, quadra, alameda, lote, referencia, telefone, cidade id_cidade "
-	            + "FROM endereco WHERE id_cidade=?  ORDER BY quadra";
+	            + "FROM quadra WHERE id_cidade=?  ORDER BY quadra";
 	    
 	    con.preparar(query);
 	    try
@@ -261,7 +262,7 @@ public class enderecoDAO {
 	    endereco res = null;
 	    Conexao con = new Conexao();
 	    String query ="SELECT id_endereco, cep,quadra, alameda, lote, referencia, telefone, id_cidade "
-	            + "FROM endereco WHERE id_endereco=? LIKE ?";
+	            + "FROM cep WHERE id_endereco=? LIKE ?";
 	    
 	    con.preparar(query);
 	    try

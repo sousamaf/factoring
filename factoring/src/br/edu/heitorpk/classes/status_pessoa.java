@@ -1,20 +1,20 @@
 package br.edu.heitorpk.classes;
 
-import javax.xml.soap.Text;
+
 
 public class status_pessoa extends emprestimo{
 
 	private String status_emprestimo;
-	private Text descricao;
+	private String descricao;
 	
 	public status_pessoa() {
 		super();
 	}
 
-	public status_pessoa(String status_emprestimo, Text descicao) {
+	public status_pessoa(String status_emprestimo, String descricao) {
 		
 		this.status_emprestimo = status_emprestimo;
-		this.descricao = descicao;
+		this.descricao = descricao;
 	}
 
 	
@@ -35,12 +35,12 @@ public class status_pessoa extends emprestimo{
 		this.status_emprestimo = status_emprestimo;
 	}
 
-	public Text getDescicao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setDescicao(Text descicao) {
-		this.descricao = descicao;
+	public void setDescicao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

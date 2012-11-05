@@ -7,13 +7,13 @@ import javax.xml.soap.Text;
 public class status_cheque extends cheques {
 
 	private String status_cheq;
-	private Text observacao;
+	private String observacao;
 	
 	public status_cheque() {
 		super();
 	}
 
-	public status_cheque(String status_cheq, Text observacao) {
+	public status_cheque(String status_cheq, String observacao) {
 		this.status_cheq = status_cheq;
 		this.observacao = observacao;
 	}
@@ -30,11 +30,11 @@ public class status_cheque extends cheques {
 		
 	}
 
-	public Text getObservacao() {
+	public String getObservacao() {
 		return observacao;
 	}
 
-	public void setObservacao(Text observacao) {
+	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
 

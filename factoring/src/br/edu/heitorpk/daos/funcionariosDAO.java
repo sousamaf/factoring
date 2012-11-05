@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.classes.funcionarios;
 import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.classes.pessoa_fisica;
@@ -25,15 +27,13 @@ public class funcionariosDAO {
 	      con.getPstmt().setInt(1, funcionario.getId_cliente());
 	      if (res = con.executeUpdate())
 	      {
-	    	  pessoaDAO aDAO = new pessoaDAO();
-	    	  if(aDAO.buscar(pessoa.getid_cliente())==null){
-	    	  
+	    	 
 	          query = "DELETE FROM pessoa WHERE id_cliente=?";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, funcionario.getId_cliente());
 	          res = con.executeUpdate();
 	    	  }
-	      }
+	      
 	    } catch (SQLException ex)
 	    {
 	      Logger.getLogger(funcionariosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,16 +44,44 @@ public class funcionariosDAO {
 	      return (res);
 	    }
 	  }
-
+	 @SuppressWarnings("finally")
+		public boolean inserir(funcionarios fun)
+		  {
+		    boolean res = false;
+		    Conexao con = new Conexao();
+		    String query = "INSERT INTO funcionarios (gerente, salario, data_entrada, data_saida) "
+		            + "VALUES (?, ?, ?, ? )";
+		    
+		    con.preparar(query);
+		    try
+		    {
+		      con.getPstmt().setBoolean(1, fun.isGerente());
+		      con.getPstmt().setFloat(2, fun.getSalario());
+		      con.getPstmt().setLong(3, fun.getData_de_entrada().getTimeInMillis());
+		      con.getPstmt().setLong(4, fun.getData_de_saida().getTimeInMillis());
+		      con.getPstmt().setInt(5, fun.getId_caixa().getId_caixa());
+		      
+		      res = con.executeUpdate();
+		    } catch (SQLException ex)
+		    {
+		      Logger.getLogger(funcionariosDAO.class.getName()).log(Level.SEVERE, null, ex);
+		    }
+		    finally
+		    {
+		      con.fechar();
+		      return(res);
+		    }
+		  }
 		@SuppressWarnings("finally")
 		public boolean atualizar(pessoa p, pessoa_fisica fisica, funcionarios fun)
 		  {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE pessoa_fisica, pessoa SET email=?,login=? senha=?, id_cliente=?," +
-		    		" nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=?"
-		            + "WHERE id_pessoa_fisica=?, id_cliente=?";
+		    String query =  "" +
+		    		"UPDATE f.nome, f.cpf, f.rg, f.sexo, f.data_de_nascimento, p.email, p.login, p.senha, p.id_cliente" +
+		    		"FROM pessoa_fisica.f, pessoa.p" +
+		    		"WHERE f.pessoa_fisica,p.id_cliente";
 		    
 		    con.transacao();
 		    con.preparar(query);
@@ -72,7 +100,7 @@ public class funcionariosDAO {
 		          res = con.executeUpdate();
 		      if (res = con.executeUpdate())
 		      {
-		        query = "UPDATE funcionarios SET gerente=? salario=?, data_de_entrada=?, data_de_saida=?"
+		        query = "UPDATE funcionarios SET gerente=? salario=?, data_de_entrada=?, data_de_saida=? "
 			            + "WHERE id_funcionario=?";
 		        con.preparar(query);
 			      con.getPstmt().setFloat(1, fun.getSalario());
@@ -101,7 +129,7 @@ public class funcionariosDAO {
 		  {
 		    ArrayList<pessoa_fisica> res = new ArrayList<pessoa_fisica>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT pessoa_fisica, cpf FROM cpf ORDER BY cpf";
+		    String query = "SELECT cpf,nome, rg, sexo, data_de_nascimento FROM pessoa_fisica ORDER BY cpf";
 
 		    con.preparar(query);
 		    try
@@ -111,6 +139,10 @@ public class funcionariosDAO {
 		      {
 		        pessoa_fisica p = new pessoa_fisica();
 		        p.setCpf(rs.getInt("cpf"));
+		        p.setNome(rs.getString("nome"));
+		        p.setRg(rs.getInt("rg"));
+		        p.setSexo(rs.getString("sexo"));
+		        p.setData_de_nascimento(rs.getDate("data_de_nascimento"));
 		        res.add(p);
 		      }
 		    } catch (SQLException ex)
@@ -128,7 +160,7 @@ public class funcionariosDAO {
 		  {
 		    ArrayList<funcionarios> res = new ArrayList<funcionarios>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT id_funcionario FROM id_funcionario ORDER BY id_funcionario";
+		    String query = "SELECT id_funcionario, gerente, salario, data_entrada, data_saida, id_caixa FROM funcionarios ";
 
 		    con.preparar(query);
 		    try
@@ -138,6 +170,11 @@ public class funcionariosDAO {
 		      {
 		        funcionarios f = new funcionarios();
 		        f.setId_funcionario(rs.getInt("id_funcionario"));
+		        f.setGerente(rs.getBoolean("gerente"));
+		        f.setSalario(rs.getFloat("salario"));
+		        f.setData_de_entrada(rs.getDate("data_de_entrada"));
+		        f.setData_de_saida(rs.getDate("data_de_saida"));
+		        f.setId_caixa(rs.getInt("id_caixa"));
 		        res.add(f);
 		      }
 		    } catch (SQLException ex)

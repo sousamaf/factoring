@@ -48,8 +48,8 @@ public class pessoa_fisicaDAO {
 	    boolean res = false;
 	    Conexao con = new Conexao();
 	    int idfisica = 0;
-	    String query = "INSERT INTO pessoa (email,login, senha, id_cliente) "
-	            + "VALUES (?, ?, ?, ?,)";
+	    String query = "INSERT INTO pessoa (email,login, senha) "
+	            + "VALUES (?, ?, ?)";
 	    con.transacao();
 	    con.preparar(query, 0);
 	    try
@@ -57,15 +57,14 @@ public class pessoa_fisicaDAO {
 	      con.getPstmt().setString(6, pessoa_fisica.getEmail());
 	      con.getPstmt().setString(7, pessoa_fisica.getLogin());
 	      con.getPstmt().setString(8, pessoa_fisica.getSenha());
-	      con.getPstmt().setInt(9, pessoa_fisica.getId_cliente());
 	      if (res = con.executeUpdate())
 	      {
 	        ResultSet rs = con.getPstmt().getGeneratedKeys();
 	        if (rs.next())
 	        {
 	          idfisica = rs.getInt(1);
-	          query = "INSERT INTO pessoa_fisica (nome, cpf, rg, sexo, data_de_nascimento)" 
-		            + "VALUES (?, ?, ?, ?, ?,)";
+	          query = "INSERT INTO pessoa_fisica (nome, cpf, rg, sexo, data_de_nascimento) " 
+		            + "VALUES (?, ?, ?, ?, ?)";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, idfisica);
 	          con.getPstmt().setString(1, pessoa_fisica.getNome());
@@ -97,9 +96,10 @@ public class pessoa_fisicaDAO {
 	    boolean res = false;
 	    Conexao con = new Conexao();
 	    
-	    String query = "UPDATE pessoa_fisica SET nome=?, cep=?, rg=?, sexo=? data_de_nascimento=?" 
-	    + "UPDATE pessoa SET email=?,login=? senha=?, id_cliente=? "
-	            + "WHERE pessoa_id_cliente=?";
+	    String query = "UPDATE f.nome, f.cep, f.rg, f.sexo, f.data_de_nascimento " 
+	    + "p.email, p.login, p.senha, p.id_cliente=?" +
+	    "FROM pessoa_fisica.f, pessoa.p "
+	            + "WHERE f.pessoa_fisica, p.id_cliente";
 	    
 	    con.transacao();
 	    con.preparar(query);
@@ -116,7 +116,7 @@ public class pessoa_fisicaDAO {
 		      con.getPstmt().setInt(9, pessoa_fisica.getId_cliente());
 	      if (res = con.executeUpdate())
 	      {
-	        query = "UPDATE pessoa_fisica SET nome?, cpf=?, rg=?, sexo=?, data_de_nascimento=? WHERE id_cliente=?";
+	        query = "UPDATE pessoa_fisica SET nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=? WHERE id_cliente=? ";
 	        con.preparar(query);
 	          con.getPstmt().setString(1, pessoa_fisica.getNome());
 		      con.getPstmt().setInt(2, pessoa_fisica.getCpf());
@@ -146,7 +146,7 @@ public class pessoa_fisicaDAO {
 	  {
 	    ArrayList<pessoa_fisica> res = new ArrayList<pessoa_fisica>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT pessoa_fisica, cpf FROM uf ORDER BY cpf";
+	    String query = "SELECT nome, cpf, rg, sexo, data_de_nascimento  FROM pessoa_fisica ORDER BY cpf";
 
 	    con.preparar(query);
 	    try
@@ -155,7 +155,11 @@ public class pessoa_fisicaDAO {
 	      while (rs.next())
 	      {
 	        pessoa_fisica fisica = new pessoa_fisica();
+	        fisica.setNome(rs.getString("nome"));
 	        fisica.setCpf(rs.getInt("cpf"));
+	        fisica.setRg(rs.getInt("rg"));
+	        fisica.setSexo(rs.getString("sexo"));
+	        fisica.setData_de_nascimento(rs.getDate("data_de_nascimento"));
 	        res.add(fisica);
 	      }
 	    } catch (SQLException ex)
@@ -173,7 +177,7 @@ public class pessoa_fisicaDAO {
 	  {
 	    pessoa_fisica res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT pessoa_fisica, rg FROM rg WHERE pessoa_fisica=?";
+	    String query = "SELECT  nome, cpf, rg, sexo, data_de_nascimento FROM pessoa_fisica WHERE id_cliente";
 
 	    con.preparar(query);
 	    try
@@ -183,7 +187,13 @@ public class pessoa_fisicaDAO {
 	      if (rs.next())
 	      {
 	        res = new pessoa_fisica();
+	        res.setId_cliente(rs.getInt("id_cliente"));
+	        res.setCpf(rs.getInt("cpf"));
 	        res.setRg(rs.getInt("rg"));
+	        res.setSexo(rs.getString("sexo"));
+	        res.setData_de_nascimento(rs.getDate("data_de_nascimento"));
+	        
+	        
 	      }
 	    } catch (SQLException ex)
 	    {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.classes.status_pessoa;
 import br.edu.heitorpk.conexao.Conexao;
 
@@ -41,15 +42,39 @@ public class status_pessoaDAO {
 	      return (res);
 	    }
 	  }
-
+	 @SuppressWarnings("finally")
+		public boolean inserir(status_pessoa id)
+		  {
+		    boolean res = false;
+		    Conexao con = new Conexao();
+		    String query = "INSERT INTO status_cheque (status_emprestimo, descricao) "
+		            + "VALUES (?, ?)";
+		    
+		    con.preparar(query);
+		    try
+		    {
+		      con.getPstmt().setString(1, id.getStatus_emprestimo());
+		      con.getPstmt().setString(2, id.getDescricao());
+		      
+		      res = con.executeUpdate();
+		    } catch (SQLException ex)
+		    {
+		      Logger.getLogger(status_pessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+		    }
+		    finally
+		    {
+		      con.fechar();
+		      return(res);
+		    }
+		  }
 		@SuppressWarnings("finally")
 		public boolean atualizar(status_pessoa status)
 		  {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE emprestimo SET comprovante_de_renda=?,vale_emprestimo=? juros_mensal=?, juros_atraso=?" +
-		    		"id_cliente, id_movimentacao"
+		    String query =  "UPDATE emprestimo SET comprovante_de_renda=?, valor_emprestimo=?, juros_mensal=?, juros_atraso=?" +
+		    		"id_cliente, id_movimentacao "
 		            + "WHERE id_emprestimo=?";
 		    
 		    con.transacao();
@@ -70,7 +95,7 @@ public class status_pessoaDAO {
 			            + "WHERE id_emprestimo=?";
 		        con.preparar(query);
 		        con.getPstmt().setString(1, status.getStatus_emprestimo());
-			      con.getPstmt().setString(2, status.getDescicao());
+			      con.getPstmt().setString(2, status.getDescricao());
 		          res = con.executeUpdate();
 		        res = con.executeUpdate();
 		      }
@@ -91,7 +116,7 @@ public class status_pessoaDAO {
 		  {
 		    ArrayList<status_pessoa> res = new ArrayList<status_pessoa>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT status_emprestimo, emprestimo_id_emprestimo FROM id_emprestimo ORDER BY id_emprestimo";
+		    String query = "SELECT  status_emprestimo,id_emprestimo FROM status_pessoa";
 
 		    con.preparar(query);
 		    try
@@ -101,6 +126,7 @@ public class status_pessoaDAO {
 		      {
 		        status_pessoa status = new status_pessoa();
 		        status.setId_emprestimo(rs.getInt("id_emprestimo"));
+		        status.setStatus_emprestimo(rs.getString("status_emprestimo"));
 		        res.add(status);
 		      }
 		    } catch (SQLException ex)

@@ -16,7 +16,7 @@ public class estadoDAO {
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM id_uf  WHERE id_uf=?";
+	    String query = "DELETE FROM estado  WHERE id_uf=?";
 	    
 	    con.preparar(query);
 	    try
@@ -39,13 +39,13 @@ public class estadoDAO {
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "INSERT INTO id_uf (id_uf, nome) VALUES (?, ?)";
+	    String query = "INSERT INTO estado (id_uf, estado) VALUES (?, ?)";
 	    
 	    con.preparar(query);
 	    try
 	    {
 	      con.getPstmt().setString(1, id_uf.getId_uf());
-	      con.getPstmt().setString(2, id_uf.getNome());
+	      con.getPstmt().setString(2, id_uf.getEstado());
 	      res = con.executeUpdate();
 	    } catch (SQLException ex)
 	    {
@@ -63,13 +63,13 @@ public class estadoDAO {
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "UPDATE id_uf SET id_uf=?, nome=? WHERE id_uf=?";
+	    String query = "UPDATE estado SET id_uf=?, estado=? WHERE id_uf=?";
 	    
 	    con.preparar(query);
 	    try
 	    {
 	      con.getPstmt().setString(1, ufnova.getId_uf());
-	      con.getPstmt().setString(2, ufnova.getNome());
+	      con.getPstmt().setString(2, ufnova.getEstado());
 	      con.getPstmt().setString(3, ufatual.getId_uf());
 	      res = con.executeUpdate();
 	    } catch (SQLException ex)
@@ -88,7 +88,7 @@ public class estadoDAO {
 	  {
 	    ArrayList<estado> res = new ArrayList<estado>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_uf, estado FROM uf ORDER BY id_uf";
+	    String query = "SELECT id_uf, estado FROM estado ";
 	    
 	    con.preparar(query);
 	    try
@@ -98,7 +98,7 @@ public class estadoDAO {
 	      {
 	        estado id_uf = new estado();
 	        id_uf.setId_uf(rs.getString("id_uf"));
-	        id_uf.setNome(rs.getString("nome"));
+	        id_uf.setEstado(rs.getString("estado"));
 	        res.add(id_uf);
 	      }
 	    } catch (SQLException ex)
@@ -117,7 +117,7 @@ public class estadoDAO {
 	  {
 	    estado res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_uf, nome FROM uf WHERE id_uf=?";
+	    String query = "SELECT id_uf, estado FROM estado WHERE id_uf=?";
 	    
 	    con.preparar(query);
 	    try
@@ -128,7 +128,7 @@ public class estadoDAO {
 	      {
 	        res = new estado();
 	        res.setId_uf(rs.getString("id_uf"));
-	        res.setNome(rs.getString("nome"));
+	        res.setEstado(rs.getString("estado"));
 	      }
 	    } catch (SQLException ex)
 	    {
@@ -146,7 +146,7 @@ public class estadoDAO {
 	  {
 	    estado res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_uf, nome FROM uf WHERE nome LIKE ?";
+	    String query = "SELECT id_uf, nome FROM estado WHERE estado LIKE ?";
 	    
 	    con.preparar(query);
 	    try
@@ -157,7 +157,7 @@ public class estadoDAO {
 	      {
 	        res = new estado();
 	        res.setId_uf(rs.getString("id_uf"));
-	        res.setNome(rs.getString("nome"));
+	        res.setEstado(rs.getString("estado"));
 	      }
 	    } catch (SQLException ex)
 	    {

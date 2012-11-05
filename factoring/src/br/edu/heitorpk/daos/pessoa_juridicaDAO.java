@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.classes.pessoa_fisica;
 import br.edu.heitorpk.classes.pessoa_juridica;
 import br.edu.heitorpk.conexao.Conexao;
@@ -45,7 +46,31 @@ public class pessoa_juridicaDAO {
 	      return (res);
 	    }
 	  }
-
+	  @SuppressWarnings("finally")
+		public boolean inserir(pessoa_juridica juridica)
+		  {
+		    boolean res = false;
+		    Conexao con = new Conexao();
+		    String query = "INSERT INTO pessoa_juridica (cnpj, nome_empresa ) "
+		            + "VALUES (?, ?)";
+		    
+		    con.preparar(query);
+		    try
+		    {
+		     con.getPstmt().setInt(1, juridica.getCnpj());
+		     con.getPstmt().setString(2, juridica.getNome_empresa());
+		      
+		      res = con.executeUpdate();
+		    } catch (SQLException ex)
+		    {
+		      Logger.getLogger(pessoa_juridicaDAO.class.getName()).log(Level.SEVERE, null, ex);
+		    }
+		    finally
+		    {
+		      con.fechar();
+		      return(res);
+		    }
+		  }
 	@SuppressWarnings("finally")
 	public boolean atualizar(pessoa_juridica pessoa_juridica)
 	  {
@@ -90,7 +115,7 @@ public class pessoa_juridicaDAO {
 	  {
 	    ArrayList<pessoa_juridica> res = new ArrayList<pessoa_juridica>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT pessoa_juridica, cnjp FROM cnpj ORDER BY cnpj";
+	    String query = "SELECT cnjp, nome_empresa FROM pessoa_juridica ORDER BY cnpj";
 
 	    con.preparar(query);
 	    try
@@ -100,6 +125,7 @@ public class pessoa_juridicaDAO {
 	      {
 	        pessoa_juridica juridica = new pessoa_juridica();
 	        juridica.setCnpj(rs.getInt("cnpj"));
+	        juridica.setNome_empresa(rs.getString("nome_empresa"));
 	        res.add(juridica);
 	      }
 	    } catch (SQLException ex)

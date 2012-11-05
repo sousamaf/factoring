@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.classes.status_cheque;
 import br.edu.heitorpk.conexao.Conexao;
 
@@ -41,15 +42,39 @@ public class status_chequeDAO {
 	      return (res);
 	    }
 	  }
-
+	 @SuppressWarnings("finally")
+		public boolean inserir(status_cheque id)
+		  {
+		    boolean res = false;
+		    Conexao con = new Conexao();
+		    String query = "INSERT INTO status_cheque (status_cheq, observacao ) "
+		            + "VALUES (?, ?)";
+		    
+		    con.preparar(query);
+		    try
+		    {
+		      con.getPstmt().setString(1, id.getStatus_cheq());
+		      con.getPstmt().setString(2, id.getObservacao());
+		      
+		      res = con.executeUpdate();
+		    } catch (SQLException ex)
+		    {
+		      Logger.getLogger(status_chequeDAO.class.getName()).log(Level.SEVERE, null, ex);
+		    }
+		    finally
+		    {
+		      con.fechar();
+		      return(res);
+		    }
+		  }
 		@SuppressWarnings("finally")
 		public boolean atualizar(status_cheque status)
 		  {
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=? numero=?,cpf/cnpj=? telefone=? "
-		    		+ "valor=?, recebimento=? vencimento=?, id_cliente, id_tipo, id_movimentacao"
+		    String query =  "UPDATE cheques SET titular=?,banco=? agencia=?, numero_conta=?, numero=?,cpf/cnpj=?, telefone=? "
+		    		+ "valor=?, recebimento=?, vencimento=?, id_cliente, id_tipo, id_movimentacao "
 		            + "WHERE id_cheque=?";
 		    
 		    con.transacao();
@@ -74,7 +99,7 @@ public class status_chequeDAO {
 		      if (res = con.executeUpdate())
 		      {
 		        query = "UPDATE status_cheque SET status_cheq=?, observacao=? "
-			            + "WHERE id_cheque?";
+			            + "WHERE id_cheque=?";
 		        con.preparar(query);
 		        con.getPstmt().setString(1, status.getStatus_cheq());
 			      con.getPstmt().setString(2, status.getObservacao());
@@ -98,7 +123,7 @@ public class status_chequeDAO {
 		  {
 		    ArrayList<status_cheque> res = new ArrayList<status_cheque>();
 		    Conexao con = new Conexao();
-		    String query = "SELECT status_cheque, cheques_id_cheque FROM id_cheque ORDER BY id_cheque";
+		    String query = "SELECT  id_cheque, observacao FROM status_cheque";
 
 		    con.preparar(query);
 		    try
@@ -108,6 +133,7 @@ public class status_chequeDAO {
 		      {
 		        status_cheque status = new status_cheque();
 		        status.setId_cheque(rs.getInt("id_cheque"));
+		        status.setStatus_cheq(rs.getString("status_cheque"));
 		        res.add(status);
 		      }
 		    } catch (SQLException ex)
