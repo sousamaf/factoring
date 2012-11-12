@@ -1,14 +1,17 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.heitorpk.classes.movimentacao;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class movimentacaoDAO {
+public class movimentacaoDAO implements Serializable{
 	@SuppressWarnings("finally")
 	  public boolean excluir(movimentacao id)
 	  {
@@ -87,7 +90,10 @@ public class movimentacaoDAO {
 		        movimentacao mov = new movimentacao();
 		        mov.setId_movimentacao(rs.getInt("id_movimentacao"));
 		        mov.setValor_movimentacao(rs.getFloat("valor_movimentacao"));
-		        mov.setHora_movimentacao(rs.getDate("hora_movimentacao"));
+		        Date t = rs.getDate("hora_movimentacao");
+		        Calendar cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        mov.setHora_movimentacao(cal);
 		        mov.setId_caixa(rs.getInt("id_caixa"));
 		        res.add(mov);
 		      }
@@ -116,7 +122,10 @@ public class movimentacaoDAO {
 			        movimentacao mov = new movimentacao();
 			        mov.setId_movimentacao(rs.getInt("id_movimentacao"));
 			        mov.setValor_movimentacao(rs.getFloat("valor_movimentacao"));
-			        mov.setHora_movimentacao(rs.getDate("hora_movimentacao"));
+			        Date t = rs.getDate("hora_movimentacao");
+			        Calendar cal =  Calendar.getInstance();
+			        cal.setTime(t);
+			        mov.setHora_movimentacao(cal);
 			        mov.setId_caixa(rs.getInt("id_caixa"));
 			        res.add(mov);
 			      }

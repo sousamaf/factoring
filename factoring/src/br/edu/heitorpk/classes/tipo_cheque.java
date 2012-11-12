@@ -1,6 +1,8 @@
 package br.edu.heitorpk.classes;
 
-public class tipo_cheque {
+import java.io.Serializable;
+
+public class tipo_cheque implements Serializable{
 
 	private int id_tipo;
 	private String tipo;

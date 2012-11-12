@@ -1,5 +1,6 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.logging.Logger;
 import br.edu.heitorpk.classes.estado;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class estadoDAO {
+public class estadoDAO implements Serializable{
 
 	@SuppressWarnings("finally")
 	public boolean excluir(estado id_uf)

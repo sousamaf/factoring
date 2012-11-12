@@ -1,5 +1,7 @@
 package br.edu.heitorpk.realizandoEmprestimo;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -12,7 +14,7 @@ import br.edu.heitorpk.daos.emprestimoDAO;
 
 @ManagedBean (name="rEmprestimo")
 @ViewScoped
-public class RealizandoEmprestimo {
+public class RealizandoEmprestimo implements Serializable{
 	
 	//DAOs
 	private emprestimoDAO emprestimoDAO;

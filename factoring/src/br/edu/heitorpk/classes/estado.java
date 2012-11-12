@@ -1,7 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 
-public class estado {
+
+public class estado implements Serializable{
 private String id_uf;
 private String estado;
 

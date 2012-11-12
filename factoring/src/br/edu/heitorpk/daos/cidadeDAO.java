@@ -1,5 +1,6 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import br.edu.heitorpk.classes.cidade;
 import br.edu.heitorpk.classes.estado;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class cidadeDAO {
-	@SuppressWarnings("finally")
+public class cidadeDAO implements Serializable {
+	
 	public boolean excluir(cidade id_cidade)
 	  {
 	    boolean res = false;
@@ -34,7 +35,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public boolean inserir(cidade cidade)
 	  {
 	    boolean res = false;
@@ -59,7 +60,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public boolean atualizar(cidade cidade)
 	  {
 	    boolean res = false;
@@ -85,7 +86,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public ArrayList<cidade> buscar()
 	  {
 	    ArrayList<cidade> res = new ArrayList<cidade>();
@@ -120,7 +121,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public ArrayList<cidade> buscar(estado id_uf)
 	  {
 	    ArrayList<cidade> res = new ArrayList<cidade>();
@@ -152,7 +153,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public ArrayList<cidade> buscar(String id_uf)
 	  {
 	    ArrayList<cidade> res = new ArrayList<cidade>();
@@ -187,7 +188,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public cidade buscar(int id_cidade)
 	  {
 	    cidade res = null;
@@ -222,7 +223,7 @@ public class cidadeDAO {
 	    }
 	  }
 	  
-	  @SuppressWarnings("finally")
+	  
 	public cidade buscarPorNome(String nome)
 	  {
 	    cidade res = null;

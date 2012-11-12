@@ -1,5 +1,7 @@
 package br.edu.heitorpk.cadastroCheque;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -10,9 +12,9 @@ import br.edu.heitorpk.classes.movimentacao;
 import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.classes.tipo_cheque;
 import br.edu.heitorpk.daos.chequesDAO;
-@ManagedBean (name= "CadastroCheque")
-@ViewScoped
-public class CadastroCheque {
+
+
+public class CadastroCheque implements Serializable{
 
 	//DAOs
 		private chequesDAO chequesDAO;

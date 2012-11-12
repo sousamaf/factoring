@@ -1,7 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 
-public class pessoa_juridica extends pessoa{
+
+public class pessoa_juridica extends pessoa implements Serializable{
 
 	private int cnpj;
 	private String nome_empresa;

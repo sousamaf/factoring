@@ -1,8 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class cheques {
+public class cheques implements Serializable{
 
 	private int id_cheque;
 	private String titular;
@@ -10,7 +11,7 @@ public class cheques {
 	private int agencia;
 	private int numero_conta;
 	private int numero;
-	private int cpnf_cnpj;
+	private int cpf_cnpj;
 	private int telefone;
 	private float valor;
 	private Calendar recebimento;
@@ -34,7 +35,7 @@ public class cheques {
 		this.agencia = agencia;
 		this.numero_conta = numero_conta;
 		this.numero = numero;
-		this.cpnf_cnpj = cpnf_cnpj;
+		this.cpf_cnpj = cpnf_cnpj;
 		this.telefone = telefone;
 		this.valor = valor;
 		this.recebimento = recebimento;
@@ -92,12 +93,12 @@ public class cheques {
 		this.numero = numero;
 	}
 
-	public int getCpnf_cnpj() {
-		return cpnf_cnpj;
+	public int getCpf_cnpj() {
+		return cpf_cnpj;
 	}
 
-	public void setCpnf_cnpj(int cpnf_cnpj) {
-		this.cpnf_cnpj = cpnf_cnpj;
+	public void setCpf_cnpj(int cpf_cnpj) {
+		this.cpf_cnpj = cpf_cnpj;
 	}
 
 	public int getTelefone() {

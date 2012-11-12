@@ -1,8 +1,9 @@
 	package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class agendar_horario extends pessoa{
+public class agendar_horario extends pessoa implements Serializable{
 	
 	private Calendar data;
 	private Calendar hora;

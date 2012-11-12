@@ -1,8 +1,11 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,7 +13,7 @@ import br.edu.heitorpk.classes.cheques;
 import br.edu.heitorpk.classes.cidade;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class chequesDAO {
+public class chequesDAO implements Serializable{
 	@SuppressWarnings("finally")
 	  public boolean excluir(cheques cheq)
 	  {
@@ -153,8 +156,15 @@ public class chequesDAO {
 		        cheq.setCpnf_cnpj(rs.getInt("cpf_cnpj"));
 		        cheq.setTelefone(rs.getInt("telefone"));
 		        cheq.setValor(rs.getFloat("valor"));
-		        cheq.setRecebimento(rs.getDate("recebimento"));
-		        cheq.setVencimento(rs.getDate("vencimento"));
+		        Date t = rs.getDate("recebimento");
+		        Calendar cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        cheq.setRecebimento(cal);
+		        
+		        t = rs.getDate("vencimento");
+		        cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        cheq.setVencimento(cal);
 		        res.add(cheq);
 		      }
 		    } catch (SQLException ex)
@@ -191,8 +201,15 @@ public class chequesDAO {
 		        cheq.setCpnf_cnpj(rs.getInt("cpf_cnpj"));
 		        cheq.setTelefone(rs.getInt("telefone"));
 		        cheq.setValor(rs.getFloat("valor"));
-		        cheq.setRecebimento(rs.getDate("recebimento"));
-		        cheq.setVencimento(rs.getDate("vencimento"));
+		        Date t = rs.getDate("recebimento");
+		        Calendar cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        cheq.setRecebimento(cal);
+		        
+		        t = rs.getDate("vencimento");
+		        cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        cheq.setVencimento(cal);
 		        res.add(cheq);
 		      }
 		    } catch (SQLException ex)

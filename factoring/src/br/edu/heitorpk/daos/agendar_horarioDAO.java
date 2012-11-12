@@ -1,5 +1,6 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ import br.edu.heitorpk.classes.fiador;
 import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class agendar_horarioDAO {
+public class agendar_horarioDAO implements Serializable{
 	 @SuppressWarnings("finally")
 	  public boolean excluir(agendar_horario agenda)
 	  {

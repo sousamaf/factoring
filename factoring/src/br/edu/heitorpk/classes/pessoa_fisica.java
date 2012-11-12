@@ -1,8 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class pessoa_fisica extends pessoa{
+public class pessoa_fisica extends pessoa implements Serializable{
 
 	
 	private int cpf;

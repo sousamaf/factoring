@@ -1,7 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 
-public class pessoa {
+
+public class pessoa implements Serializable{
 private int id_cliente;
 private String email;
 private String login;

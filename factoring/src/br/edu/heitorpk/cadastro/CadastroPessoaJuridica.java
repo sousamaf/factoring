@@ -1,5 +1,7 @@
 package br.edu.heitorpk.cadastro;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -9,9 +11,8 @@ import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.classes.pessoa_juridica;
 import br.edu.heitorpk.daos.pessoa_juridicaDAO;
 
-@ManagedBean (name="cadastroPessoaJuridica")
-@ViewScoped
-public class CadastroPessoaJuridica {
+
+public class CadastroPessoaJuridica implements Serializable{
 	// DAOs
 	private pessoa_juridicaDAO pessoa_juridicaDAO;
 

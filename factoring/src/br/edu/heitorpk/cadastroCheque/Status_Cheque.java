@@ -1,5 +1,7 @@
 package br.edu.heitorpk.cadastroCheque;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -8,9 +10,7 @@ import javax.faces.context.FacesContext;
 import br.edu.heitorpk.classes.status_cheque;
 import br.edu.heitorpk.daos.status_chequeDAO;
 
-@ManagedBean (name= "StatusCheque")
-@ViewScoped
-public class Status_Cheque {
+public class Status_Cheque implements Serializable {
 
 	//DAOs
 		private status_chequeDAO status_chequeDAO;

@@ -1,5 +1,6 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.classes.status_cheque;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class status_chequeDAO {
+public class status_chequeDAO implements Serializable{
 	@SuppressWarnings("finally")
 	  public boolean excluir(status_cheque id)
 	  {
@@ -81,7 +82,7 @@ public class status_chequeDAO {
 		    con.preparar(query);
 		    try
 		    {
-		    		con.getPstmt().setString(1, status.getTitular());
+		    	  con.getPstmt().setString(1, status.getTitular());
 			      con.getPstmt().setInt(2, status.getBanco());
 			      con.getPstmt().setInt(3, status.getAgencia());
 			      con.getPstmt().setInt(4, status.getNumero_conta());

@@ -1,8 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class movimentacao {
+public class movimentacao implements Serializable{
 
 	private int id_movimentacao;
 	private float valor_movimentacao;

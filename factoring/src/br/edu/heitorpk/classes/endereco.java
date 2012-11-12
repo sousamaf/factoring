@@ -1,7 +1,10 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 
-public class endereco {
+
+public class endereco implements Serializable{
+	
 private int id_endereco;
 private int cep;
 private String quadra;

@@ -1,8 +1,9 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class controle_de_caixa {
+public class controle_de_caixa implements Serializable{
 
 	private int id_caixa;
 	private Calendar entrada;

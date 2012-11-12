@@ -1,14 +1,17 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.heitorpk.classes.pessoa_fisica;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class pessoa_fisicaDAO {
+public class pessoa_fisicaDAO implements Serializable{
 	
 	@SuppressWarnings("finally")
 	public boolean excluir(pessoa_fisica pessoa_fisica)
@@ -159,7 +162,10 @@ public class pessoa_fisicaDAO {
 	        fisica.setCpf(rs.getInt("cpf"));
 	        fisica.setRg(rs.getInt("rg"));
 	        fisica.setSexo(rs.getString("sexo"));
-	        fisica.setData_de_nascimento(rs.getDate("data_de_nascimento"));
+	        Date t = rs.getDate("data_de_nascimento");
+	        Calendar cal =  Calendar.getInstance();
+	        cal.setTime(t);
+	        fisica.setData_de_nascimento(cal);
 	        res.add(fisica);
 	      }
 	    } catch (SQLException ex)
@@ -191,7 +197,11 @@ public class pessoa_fisicaDAO {
 	        res.setCpf(rs.getInt("cpf"));
 	        res.setRg(rs.getInt("rg"));
 	        res.setSexo(rs.getString("sexo"));
-	        res.setData_de_nascimento(rs.getDate("data_de_nascimento"));
+	        Date t = rs.getDate("data_de_nascimento");
+	        Calendar cal =  Calendar.getInstance();
+	        cal.setTime(t);
+	        res.setData_de_nascimento(cal);
+	       
 	        
 	        
 	      }

@@ -1,6 +1,8 @@
 package br.edu.heitorpk.classes;
 
-public class cidade {
+import java.io.Serializable;
+
+public class cidade implements Serializable{
 private int id_cidade;
 private String nome;
 private estado id_uf;

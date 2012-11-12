@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Factoring</title>
+</h:head>
+<h:body>
+<ui:composition template="/Template/padraotemplate.xhtml">
+	<ui:define name="content">
+	<h:form>
+	<f:view locale="en_US">
+	<h:panelGrid columns="2">
+		<h:outputText value="Nome:"></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.nome}" />	
+		
+		<h:outputText value="Cpf:"></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.cpf}" />
+		
+		<h:outputText value="Rg: "></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.rg}" />	
+		
+		<h:outputText value="Sexo: "></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.sexo}" />
+		
+		<h:outputText value="Data de Nascimento: "></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.data_de_nascimento}" />	
+		
+		<h:outputText value="Email: "></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa.email}" />
+		
+		<h:outputText value="Login: "></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa.login}" />	
+		
+		<h:outputText value="Senha: "></h:outputText>
+		<h:inputText value="#{controleCadastro.fisica.pessoa.senha}" />
+		
+		<h:outputText value="Estado: "></h:outputText>
+		<h:inputText value="#{controleCadastro.estado.estado.estado}" />
+		
+		<h:outputText value="Cidade: "></h:outputText>
+		<h:inputText value="#{controleCadastro.cidade.cidade.nome}" />	
+		
+		<h:outputText value="Cep: "></h:outputText>
+		<h:inputText value="#{controleCadastro.endereco.endereco.cep}" />
+		
+		<h:outputText value="Quadra: "></h:outputText>
+		<h:inputText value="#{controleCadastro.endereco.endereco.quadra}" />
+		
+		<h:outputText value="Alameda: "></h:outputText>
+		<h:inputText value="#{controleCadastro.endereco.endereco.alameda}" />
+		
+		<h:outputText value="Lote: "></h:outputText>	
+		<h:inputText value="#{controleCadastro.endereco.endereco.lote}" />
+		
+		<h:outputText value="Referência: "></h:outputText>
+		<h:inputText value="#{controleCadastro.endereco.endereco.referencia}" />
+			
+		<h:outputText value="Telefone: "></h:outputText>
+		<h:inputText value="#{controleCadastro.endereco.endereco.telefone}" />
+		
+			<h:commandButton action="#{ControleCadastro.Salvar}" value="Salvar" ></h:commandButton>
+			<h:commandLink value="Home" action="pageIndex"></h:commandLink>
+			<h:commandLink value="Cadastro Cheque" action="pageCheque"></h:commandLink>
+			</h:panelGrid>
+		<!--<f:ajax render="asd" />  -->	
+		
+		 </f:view>
+		 
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

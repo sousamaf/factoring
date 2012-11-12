@@ -1,10 +1,11 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.xml.soap.Text;
 
-public class status_cheque extends cheques {
+public class status_cheque extends cheques implements Serializable{
 
 	private String status_cheq;
 	private String observacao;

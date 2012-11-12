@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+		<h:head>
+	<title>Factoring - Cadastro Cheque</title>
+</h:head>
+<h:body>
+<ui:composition template="/Template/padraotemplate.xhtml">
+	<ui:define name="content">
+	<h:form>
+	<f:view locale="en_US">
+	<h:panelGrid columns="2">
+		<h:outputText value="Titular:"></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.titular}" />	
+		
+		<h:outputText value="Banco:"></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.banco}" />	
+		
+		<h:outputText value="Agência: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.agencia}" />	
+		
+		<h:outputText value="Número da Conta: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.numero_conta}" />	
+		
+		<h:outputText value="Número: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.numero}" />	
+		
+		<h:outputText value="Cpf/Cnpj: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.cpf_cnpj}" />	
+		
+		<h:outputText value="Telefone: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.telefone}" />	
+		
+		<h:outputText value="Valor: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.valor}" />	
+		
+		<h:outputText value="Recebimento: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.recebimento}" />	
+		
+		<h:outputText value="Vencimento: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.cheques.vencimento}" />		
+		
+		<h:outputText value="Tipo: "></h:outputText>
+		<h:inputText value="#{controleCheque.cheque.tipo_cheque.tipo}" />	
+	
+			<h:commandButton action="#{ControleCheque.salvarcheque}" value="Salvar" ></h:commandButton>
+			</h:panelGrid>
+		<!--<f:ajax render="asd" />  -->	
+		
+		 </f:view>
+		 
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</h:body>
+</html>

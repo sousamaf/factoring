@@ -1,5 +1,7 @@
 package br.edu.heitorpk.cadastro;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -9,9 +11,7 @@ import br.edu.heitorpk.classes.estado;
 import br.edu.heitorpk.daos.estadoDAO;
 
 
-@ManagedBean(name="cadastroEstado")
-@ViewScoped
-public class CadastroEstado {
+public class CadastroEstado implements Serializable{
 
 	// DAOs
 	private estadoDAO estadoDAO;

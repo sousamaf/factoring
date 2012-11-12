@@ -1,6 +1,7 @@
 package br.edu.heitorpk.daos;
 
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.classes.pessoa_fisica;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class fiadorDAO {
+public class fiadorDAO implements Serializable{
 	  @SuppressWarnings("finally")
 	  public boolean excluir(fiador fiador)
 	  {

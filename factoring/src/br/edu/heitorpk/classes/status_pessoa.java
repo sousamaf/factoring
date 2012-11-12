@@ -1,8 +1,10 @@
 package br.edu.heitorpk.classes;
 
+import java.io.Serializable;
 
 
-public class status_pessoa extends emprestimo{
+
+public class status_pessoa extends emprestimo implements Serializable{
 
 	private String status_emprestimo;
 	private String descricao;

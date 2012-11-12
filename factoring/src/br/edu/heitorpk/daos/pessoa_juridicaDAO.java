@@ -1,6 +1,7 @@
 package br.edu.heitorpk.daos;
 
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import br.edu.heitorpk.classes.pessoa_juridica;
 import br.edu.heitorpk.conexao.Conexao;
 
 
-public class pessoa_juridicaDAO {
+public class pessoa_juridicaDAO implements Serializable{
 
 	  @SuppressWarnings("finally")
 	  public boolean excluir(pessoa_juridica pessoa_juridica)

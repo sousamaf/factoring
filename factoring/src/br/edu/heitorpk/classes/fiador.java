@@ -1,6 +1,8 @@
 package br.edu.heitorpk.classes;
 
-public class fiador {
+import java.io.Serializable;
+
+public class fiador implements Serializable{
 
 		private int id_fiador;
 		private pessoa id_cliente;

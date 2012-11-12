@@ -1,5 +1,7 @@
 package br.edu.heitorpk.realizandoEmprestimo;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -8,7 +10,7 @@ import br.edu.heitorpk.daos.status_pessoaDAO;
 
 
 
-public class Status_Emprestimo {
+public class Status_Emprestimo implements Serializable{
 
 	//DAOs
 		private status_pessoaDAO status_pessoaDAO;

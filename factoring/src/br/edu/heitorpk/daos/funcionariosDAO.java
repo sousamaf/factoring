@@ -1,8 +1,11 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,7 +15,7 @@ import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.classes.pessoa_fisica;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class funcionariosDAO {
+public class funcionariosDAO implements Serializable{
 	@SuppressWarnings("finally")
 	  public boolean excluir(funcionarios funcionario)
 	  {
@@ -142,7 +145,11 @@ public class funcionariosDAO {
 		        p.setNome(rs.getString("nome"));
 		        p.setRg(rs.getInt("rg"));
 		        p.setSexo(rs.getString("sexo"));
-		        p.setData_de_nascimento(rs.getDate("data_de_nascimento"));
+		        Date t = rs.getDate("data_de_nascimento");
+		        Calendar cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        p.setData_de_nascimento(cal);
+		        
 		        res.add(p);
 		      }
 		    } catch (SQLException ex)
@@ -172,8 +179,15 @@ public class funcionariosDAO {
 		        f.setId_funcionario(rs.getInt("id_funcionario"));
 		        f.setGerente(rs.getBoolean("gerente"));
 		        f.setSalario(rs.getFloat("salario"));
-		        f.setData_de_entrada(rs.getDate("data_de_entrada"));
-		        f.setData_de_saida(rs.getDate("data_de_saida"));
+		        Date t = rs.getDate("data_de_entrada");
+		        Calendar cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        f.setData_de_entrada(cal);
+		        
+		        t = rs.getDate("data_de_saida");
+		         cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        f.setData_de_entrada(cal);
 		        f.setId_caixa(rs.getInt("id_caixa"));
 		        res.add(f);
 		      }

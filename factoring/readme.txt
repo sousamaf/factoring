@@ -5,7 +5,8 @@ Descricao do projeto:
 Sistema Web controle e gestao de recursos financeiros em modo agiotagem - ou legalmente factoring
 
 Features:
-- Cadastro de Clientes;
+- Cadastro de Clientes; x
+- Cadastro de Cheque; x
 - Controle de emprestimos;
 - Controle de cheques;
 - Controle de caixa;

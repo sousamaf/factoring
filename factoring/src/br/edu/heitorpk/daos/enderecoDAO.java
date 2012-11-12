@@ -1,5 +1,6 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import br.edu.heitorpk.classes.endereco;
 import br.edu.heitorpk.classes.estado;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class enderecoDAO {
+public class enderecoDAO implements Serializable{
 	@SuppressWarnings("finally")
 	public boolean excluir(endereco id_endereco)
 	  {

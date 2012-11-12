@@ -1,6 +1,8 @@
 package br.edu.heitorpk.classes;
 
-public class emprestimo {
+import java.io.Serializable;
+
+public class emprestimo implements Serializable{
 
 		private int id_emprestimo;
 		private float comprovante_de_renda;

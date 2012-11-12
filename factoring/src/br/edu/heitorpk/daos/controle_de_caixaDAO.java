@@ -1,5 +1,6 @@
 package br.edu.heitorpk.daos;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import br.edu.heitorpk.classes.cheques;
 import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.conexao.Conexao;
 
-public class controle_de_caixaDAO {
+public class controle_de_caixaDAO implements Serializable{
 	@SuppressWarnings("finally")
 	  public boolean excluir(controle_de_caixa caixa)
 	  {
