@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -115,9 +117,15 @@ public class controle_de_caixaDAO implements Serializable{
 		      {
 		        controle_de_caixa caixa = new controle_de_caixa();
 		        caixa.setId_caixa(rs.getInt("id_caixa"));
-		        caixa.setEntrada(rs.getDate("entrada"));
+		        Date t = rs.getDate("entrada");
+		        Calendar cal =  Calendar.getInstance();
+		        cal.setTime(t);
+		        caixa.setEntrada(cal);
 		        caixa.setSaldo(rs.getFloat("saldo"));
-		        caixa.setSaida(rs.getDate("saida"));
+		        t=rs.getDate("saida");
+		        cal = Calendar.getInstance();
+		        cal.setTime(t);
+		        caixa.setSaida(cal);
 		        res.add(caixa);
 		      }
 		    } catch (SQLException ex)

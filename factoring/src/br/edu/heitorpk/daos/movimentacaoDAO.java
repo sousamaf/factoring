@@ -94,7 +94,7 @@ public class movimentacaoDAO implements Serializable{
 		        Calendar cal =  Calendar.getInstance();
 		        cal.setTime(t);
 		        mov.setHora_movimentacao(cal);
-		        mov.setId_caixa(rs.getInt("id_caixa"));
+		        //mov.setId_caixa(rs.getInt("id_caixa"));
 		        res.add(mov);
 		      }
 		    } catch (SQLException ex)
@@ -126,7 +126,7 @@ public class movimentacaoDAO implements Serializable{
 			        Calendar cal =  Calendar.getInstance();
 			        cal.setTime(t);
 			        mov.setHora_movimentacao(cal);
-			        mov.setId_caixa(rs.getInt("id_caixa"));
+			        //mov.setId_caixa(rs.getInt("id_caixa"));
 			        res.add(mov);
 			      }
 			    } catch (SQLException ex)

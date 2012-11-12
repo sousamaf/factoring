@@ -188,7 +188,7 @@ public class funcionariosDAO implements Serializable{
 		         cal =  Calendar.getInstance();
 		        cal.setTime(t);
 		        f.setData_de_entrada(cal);
-		        f.setId_caixa(rs.getInt("id_caixa"));
+		        //f.setId_caixa(rs.getInt("id_caixa"));
 		        res.add(f);
 		      }
 		    } catch (SQLException ex)

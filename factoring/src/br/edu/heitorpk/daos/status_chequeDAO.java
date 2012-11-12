@@ -87,7 +87,7 @@ public class status_chequeDAO implements Serializable{
 			      con.getPstmt().setInt(3, status.getAgencia());
 			      con.getPstmt().setInt(4, status.getNumero_conta());
 			      con.getPstmt().setInt(5, status.getNumero());
-			      con.getPstmt().setInt(6, status.getCpnf_cnpj());
+			      con.getPstmt().setInt(6, status.getCpf_cnpj());
 			      con.getPstmt().setInt(7, status.getTelefone());
 			      con.getPstmt().setFloat(8, status.getValor());
 			      con.getPstmt().setLong(9, status.getRecebimento().getTimeInMillis());

@@ -29,7 +29,7 @@ public class agendar_horario {
 	public void agendarHorario(){
 		boolean resultado;
 		
-		resultado = agendar_horarioDAO.inserir(agendar_horario);
+		//resultado = agendar_horarioDAO.inserir(agendar_horario);
 		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("asdasd"));
 		
