@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.controle_de_caixa;
-import br.edu.heitorpk.classes.tipo_cheque;
+import br.edu.heitorpk.beans.controle_de_caixa;
+import br.edu.heitorpk.beans.tipo_cheque;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class tipo_chequeDAO implements Serializable{

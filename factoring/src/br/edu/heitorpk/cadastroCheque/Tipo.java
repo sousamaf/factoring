@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.tipo_cheque;
+import br.edu.heitorpk.beans.tipo_cheque;
 import br.edu.heitorpk.daos.tipo_chequeDAO;
 
 public class Tipo implements Serializable{

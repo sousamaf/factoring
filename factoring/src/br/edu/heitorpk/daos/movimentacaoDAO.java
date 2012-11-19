@@ -8,7 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import br.edu.heitorpk.classes.movimentacao;
+
+import br.edu.heitorpk.beans.movimentacao;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class movimentacaoDAO implements Serializable{

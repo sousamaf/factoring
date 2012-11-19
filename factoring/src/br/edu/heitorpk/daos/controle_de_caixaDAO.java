@@ -9,8 +9,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.cheques;
-import br.edu.heitorpk.classes.controle_de_caixa;
+import br.edu.heitorpk.beans.cheques;
+import br.edu.heitorpk.beans.cidade;
+import br.edu.heitorpk.beans.controle_de_caixa;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class controle_de_caixaDAO implements Serializable{
@@ -137,5 +138,19 @@ public class controle_de_caixaDAO implements Serializable{
 		      return (res);
 		    }
 		  }
-		
+		/*
+		public static void main (String args[]){
+			  controle_de_caixa controle = new controle_de_caixa();
+			  
+			 /* estado estado = new estado();
+			  cid.setNome("Pium");
+			  estado.setId_uf("To");
+			  cid.setId_uf(estado);
+			  
+			  
+
+			  controle_de_caixaDAO c = new controle_de_caixaDAO();
+			  
+		  }
+		*/
 }

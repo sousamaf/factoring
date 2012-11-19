@@ -7,17 +7,31 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.cidade;
-import br.edu.heitorpk.classes.estado;
+import br.edu.heitorpk.beans.cidade;
+import br.edu.heitorpk.beans.estado;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class cidadeDAO implements Serializable {
-	
+	/*
+	public static void main (String args[]){
+		  cidade cid = new cidade();
+		 /* estado estado = new estado();
+		  cid.setNome("Pium");
+		  estado.setId_uf("To");
+		  cid.setId_uf(estado);
+		  
+		  cid.setId_cidade(1);
+
+		  cidadeDAO c = new cidadeDAO();
+		  c.excluir(cid);
+	  }
+	  */
+	@SuppressWarnings("finally")
 	public boolean excluir(cidade id_cidade)
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM id_cidade WHERE id_cidade=?";
+	    String query = "DELETE FROM cidade WHERE id_cidade=?";
 	    
 	    con.preparar(query);
 	    try
@@ -36,13 +50,13 @@ public class cidadeDAO implements Serializable {
 	  }
 	  
 	  
+	@SuppressWarnings("finally")
 	public boolean inserir(cidade cidade)
+	
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "INSERT INTO cidade (nome, id_cidade) "
-	            + "VALUES (?, ?)";
-	    
+	    String query = "INSERT INTO cidade (nome, estado_id_uf) VALUES (?, ?)";
 	    con.preparar(query);
 	    try
 	    {
@@ -52,6 +66,7 @@ public class cidadeDAO implements Serializable {
 	    } catch (SQLException ex)
 	    {
 	      Logger.getLogger(cidadeDAO.class.getName()).log(Level.SEVERE, null, ex);
+	      
 	    }
 	    finally
 	    {
@@ -60,12 +75,14 @@ public class cidadeDAO implements Serializable {
 	    }
 	  }
 	  
+	
 	  
+	@SuppressWarnings("finally")
 	public boolean atualizar(cidade cidade)
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "UPDATE cidade SET nome=?, id_uf=? "
+	    String query = "UPDATE cidade SET nome=?, estado_id_uf=? "
 	            + "WHERE idcidade=?";
 	    
 	    con.preparar(query);
@@ -87,11 +104,12 @@ public class cidadeDAO implements Serializable {
 	  }
 	  
 	  
+	@SuppressWarnings("finally")
 	public ArrayList<cidade> buscar()
 	  {
 	    ArrayList<cidade> res = new ArrayList<cidade>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_cidade, nome, id_uf "
+	    String query = "SELECT id_cidade, nome, estado_id_uf "
 	            + "FROM cidade ORDER BY nome";
 	    
 	    con.preparar(query);
@@ -122,11 +140,12 @@ public class cidadeDAO implements Serializable {
 	  }
 	  
 	  
+	@SuppressWarnings("finally")
 	public ArrayList<cidade> buscar(estado id_uf)
 	  {
 	    ArrayList<cidade> res = new ArrayList<cidade>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_cidade, nome, id_uf "
+	    String query = "SELECT id_cidade, nome, estado_id_uf "
 	            + "FROM cidade WHERE id_uf=? ORDER BY nome";
 	    
 	    con.preparar(query);
@@ -154,11 +173,12 @@ public class cidadeDAO implements Serializable {
 	  }
 	  
 	  
+	@SuppressWarnings("finally")
 	public ArrayList<cidade> buscar(String id_uf)
 	  {
 	    ArrayList<cidade> res = new ArrayList<cidade>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_cidade, nome, id_uf "
+	    String query = "SELECT id_cidade, nome, estado_id_uf "
 	            + "FROM cidade WHERE id_uf=? ORDER BY nome";
 	    
 	    con.preparar(query);
@@ -189,11 +209,12 @@ public class cidadeDAO implements Serializable {
 	  }
 	  
 	  
+	@SuppressWarnings("finally")
 	public cidade buscar(int id_cidade)
 	  {
 	    cidade res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_cidade, nome, id_uf "
+	    String query = "SELECT id_cidade, nome, estado_id_uf "
 	            + "FROM cidade WHERE id_cidade=?";
 	    
 	    con.preparar(query);
@@ -224,11 +245,12 @@ public class cidadeDAO implements Serializable {
 	  }
 	  
 	  
+	@SuppressWarnings("finally")
 	public cidade buscarPorNome(String nome)
 	  {
 	    cidade res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_cidade, nome, id_uf "
+	    String query = "SELECT id_cidade, nome, estado_id_uf "
 	            + "FROM cidade WHERE nome LIKE ?";
 	    
 	    con.preparar(query);
@@ -257,4 +279,6 @@ public class cidadeDAO implements Serializable {
 	      return(res);
 	    }
 	  }
+	
+
 }

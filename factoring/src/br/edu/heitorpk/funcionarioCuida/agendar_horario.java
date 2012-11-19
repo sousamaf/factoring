@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.funcionarios;
+import br.edu.heitorpk.beans.funcionarios;
 import br.edu.heitorpk.daos.agendar_horarioDAO;
 
 @ManagedBean (name= "fAgenda")
@@ -29,7 +29,7 @@ public class agendar_horario {
 	public void agendarHorario(){
 		boolean resultado;
 		
-		//resultado = agendar_horarioDAO.inserir(agendar_horario);
+		resultado = agendar_horarioDAO.inserir(agendar_horario);
 		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("asdasd"));
 		

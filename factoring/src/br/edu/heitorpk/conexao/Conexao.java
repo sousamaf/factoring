@@ -20,7 +20,7 @@ public class Conexao
       String driverName = "com.mysql.jdbc.Driver"; // MySQL MM JDBC driver
       Class.forName(driverName).newInstance();
       String serverName = "localhost:3306";
-      String mydatabase = "bd120122";
+      String mydatabase = "sistema_de_agiota";
       String url = "jdbc:mysql://" + serverName + "/" + mydatabase; // a URL JDBC
       String username = "root";
       String password = "heitor";

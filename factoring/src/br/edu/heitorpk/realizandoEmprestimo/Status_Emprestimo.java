@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.status_pessoa;
+import br.edu.heitorpk.beans.status_pessoa;
 import br.edu.heitorpk.daos.status_pessoaDAO;
 
 

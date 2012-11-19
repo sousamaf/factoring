@@ -5,8 +5,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.controle_de_caixa;
-import br.edu.heitorpk.classes.movimentacao;
+import br.edu.heitorpk.beans.controle_de_caixa;
+import br.edu.heitorpk.beans.movimentacao;
 import br.edu.heitorpk.daos.movimentacaoDAO;
 @ManagedBean (name= "fMovimentacao")
 @ViewScoped

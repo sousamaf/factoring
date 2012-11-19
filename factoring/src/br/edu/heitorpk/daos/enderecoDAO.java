@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.cidade;
-import br.edu.heitorpk.classes.endereco;
-import br.edu.heitorpk.classes.estado;
+import br.edu.heitorpk.beans.cidade;
+import br.edu.heitorpk.beans.endereco;
+import br.edu.heitorpk.beans.estado;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class enderecoDAO implements Serializable{
@@ -41,7 +41,7 @@ public class enderecoDAO implements Serializable{
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "INSERT INTO endereco (id_endereco, cep, quadra, lote, telefone, referencia, id_cidade) "
+	    String query = "INSERT INTO endereco (cep, quadra, alameda, lote, referencia, telefone, cidade_id_cidade) "
 	            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 	    
 	    con.preparar(query);
@@ -72,7 +72,7 @@ public class enderecoDAO implements Serializable{
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "UPDATE endereco SET cep=?, , quadra=?, alameda=?, lote=?, referencia=?, telefone=?, id_cidade=? "
+	    String query = "UPDATE endereco SET cep=?, , quadra=?, alameda=?, lote=?, referencia=?, telefone=?, cidade_id_cidade=? "
 	            + "WHERE id_endereco=?";
 	    
 	    con.preparar(query);
@@ -181,7 +181,7 @@ public class enderecoDAO implements Serializable{
 	  {
 	    ArrayList<endereco> res = new ArrayList<endereco>();
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_endereco, cep, quadra, alameda, lote, referencia, telefone, cidade id_cidade "
+	    String query = "SELECT id_endereco, cep, quadra, alameda, lote, referencia, telefone, cidade cidade_id_cidade "
 	            + "FROM endereco WHERE id_cidade=?  ORDER BY quadra";
 	    
 	    con.preparar(query);
@@ -222,7 +222,7 @@ public class enderecoDAO implements Serializable{
 	  {
 	    endereco res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT id_endereco, cep,quadra, alameda, lote, referencia, telefone, id_cidade "
+	    String query = "SELECT id_endereco, cep,quadra, alameda, lote, referencia, telefone, cidade_id_cidade "
 	            + "FROM endereco WHERE id_endereco=?";
 	    
 	    con.preparar(query);
@@ -262,7 +262,7 @@ public class enderecoDAO implements Serializable{
 	  {
 	    endereco res = null;
 	    Conexao con = new Conexao();
-	    String query ="SELECT id_endereco, cep,quadra, alameda, lote, referencia, telefone, id_cidade "
+	    String query ="SELECT id_endereco, cep,quadra, alameda, lote, referencia, telefone, cidade_id_cidade "
 	            + "FROM cep WHERE id_endereco=? LIKE ?";
 	    
 	    con.preparar(query);
@@ -296,4 +296,23 @@ public class enderecoDAO implements Serializable{
 	      return(res);
 	    }
 	  }
+	  /*
+	  public static void main(String args[]){
+		  
+		  endereco end= new endereco();
+		  end.setCep(77022320);
+		  end.setQuadra("704 Sul");
+		  end.setAlameda(02);
+		  end.setLote(78);
+		  end.setReferencia("Atrás da Bikota");
+		  end.setTelefone(84877899);
+		  
+		  cidade c = new cidade();
+		  c.setId_cidade(2);
+		  end.setId_cidade(c);
+		  
+		  enderecoDAO e = new enderecoDAO();
+		  e.inserir(end);
+	  }
+	  */
 }

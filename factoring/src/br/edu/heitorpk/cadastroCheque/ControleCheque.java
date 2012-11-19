@@ -5,8 +5,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.edu.heitorpk.classes.cheques;
-import br.edu.heitorpk.classes.status_cheque;
+import br.edu.heitorpk.beans.cheques;
+import br.edu.heitorpk.beans.status_cheque;
 import br.edu.heitorpk.daos.chequesDAO;
 import br.edu.heitorpk.daos.status_chequeDAO;
 import br.edu.heitorpk.daos.tipo_chequeDAO;

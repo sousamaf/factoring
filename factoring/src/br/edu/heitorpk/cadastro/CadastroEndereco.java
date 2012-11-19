@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.endereco;
+import br.edu.heitorpk.beans.endereco;
 import br.edu.heitorpk.daos.enderecoDAO;
 
 

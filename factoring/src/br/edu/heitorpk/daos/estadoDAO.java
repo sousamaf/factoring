@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.estado;
+import br.edu.heitorpk.beans.estado;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class estadoDAO implements Serializable{
@@ -170,4 +170,15 @@ public class estadoDAO implements Serializable{
 	      return(res);
 	    }
 	  }
+	  /*
+	  public static void main (String args[]){
+		  estado est = new estado();
+		  est.setId_uf("Ti");
+		  est.setEstado("Tocantins");
+		  
+		  estadoDAO e = new estadoDAO();
+		  e.inserir(est);
+		  
+	  }
+	  */
 }

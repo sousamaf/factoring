@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.emprestimo;
-import br.edu.heitorpk.classes.movimentacao;
-import br.edu.heitorpk.classes.pessoa;
+import br.edu.heitorpk.beans.emprestimo;
+import br.edu.heitorpk.beans.movimentacao;
+import br.edu.heitorpk.beans.pessoa;
 import br.edu.heitorpk.daos.emprestimoDAO;
 
 @ManagedBean (name="rEmprestimo")

@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.cheques;
-import br.edu.heitorpk.classes.cidade;
+import br.edu.heitorpk.beans.cheques;
+import br.edu.heitorpk.beans.cidade;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class chequesDAO implements Serializable{
@@ -51,7 +51,7 @@ public class chequesDAO implements Serializable{
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    String query = "INSERT INTO cheques (titular,banco, agencia, numero_conta, numero,cpf_cnpj, telefone, valor, recebimento, vencimento" +
-		    		"id_cliente, id_movimentacao, id_tipo ) "
+		    		"pessoa_id_cliente, movimentacao_id_movimentacao, tipo_cheque_id_tipo ) "
 		            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		    
 		    con.preparar(query);
@@ -87,8 +87,9 @@ public class chequesDAO implements Serializable{
 		    boolean res = false;
 		    Conexao con = new Conexao();
 		    
-		    String query =  "UPDATE pessoa, tipo_cheque, movimentacao"
-		            + "WHERE id_cliente=?, id_movimentacao, id_tipo";
+		    String query =  "UPDADTE p.pessoa_id_cliente=?, m.movimentacao_id_movimentacao=?, t.tipo_cheque_id_tipo=?" +
+		    		"FROM pessoa.p, movimentacao.m, tipo_cheque.t " +
+		    		"WHERE p.pessoa_id_cliente=?, m.movimentacao_id_movimentacao=?, t.tipo_cheque_id_tipo=?";
 		    
 		    con.transacao();
 		    con.preparar(query);

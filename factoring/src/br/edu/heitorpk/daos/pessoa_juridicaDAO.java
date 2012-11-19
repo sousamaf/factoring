@@ -8,30 +8,45 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.controle_de_caixa;
-import br.edu.heitorpk.classes.pessoa_fisica;
-import br.edu.heitorpk.classes.pessoa_juridica;
+import br.edu.heitorpk.beans.controle_de_caixa;
+import br.edu.heitorpk.beans.fiador;
+import br.edu.heitorpk.beans.pessoa;
+import br.edu.heitorpk.beans.pessoa_fisica;
+import br.edu.heitorpk.beans.pessoa_juridica;
 import br.edu.heitorpk.conexao.Conexao;
 
 
 public class pessoa_juridicaDAO implements Serializable{
-
+/*
+	public static void main(String args[]){
+		pessoa_juridica j= new pessoa_juridica();
+		
+		j.setCnpj(9329323);
+		j.setNome_empresa("HeitorPK");
+		//j.setId_cliente(1);
+		
+		pessoa_juridicaDAO d = new pessoa_juridicaDAO();
+		d.inserir(j);
+		//d.excluir(j);
+	}
+	*/
 	  @SuppressWarnings("finally")
 	  public boolean excluir(pessoa_juridica pessoa_juridica)
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM pessoa_juridica WHERE id_cliente=?";
+	    String query = "DELETE FROM pessoa_juridica WHERE pessoa_id_cliente=?";
 
 	    con.transacao();
 	    con.preparar(query);
 	    try
 	    {
 	      con.getPstmt().setInt(1, pessoa_juridica.getId_cliente());
+	      res = con.executeUpdate();
 	      if (res = con.executeUpdate())
 	      {
 	       
-	          query = "DELETE FROM pessoa_fisica WHERE id_cliente=?";
+	          query = "DELETE FROM pessoa_fisica WHERE pessoa_id_cliente=?";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, pessoa_juridica.getId_cliente());
 	          res = con.executeUpdate();
@@ -48,30 +63,32 @@ public class pessoa_juridicaDAO implements Serializable{
 	    }
 	  }
 	  @SuppressWarnings("finally")
-		public boolean inserir(pessoa_juridica juridica)
-		  {
-		    boolean res = false;
-		    Conexao con = new Conexao();
-		    String query = "INSERT INTO pessoa_juridica (cnpj, nome_empresa ) "
-		            + "VALUES (?, ?)";
-		    
-		    con.preparar(query);
-		    try
-		    {
-		     con.getPstmt().setInt(1, juridica.getCnpj());
-		     con.getPstmt().setString(2, juridica.getNome_empresa());
-		      
-		      res = con.executeUpdate();
-		    } catch (SQLException ex)
-		    {
-		      Logger.getLogger(pessoa_juridicaDAO.class.getName()).log(Level.SEVERE, null, ex);
-		    }
-		    finally
-		    {
-		      con.fechar();
-		      return(res);
-		    }
-		  }
+	  public boolean inserir(pessoa_juridica juridica)
+	  {
+	    boolean res = false;
+	    Conexao con = new Conexao();
+	    String query = "INSERT INTO pessoa_juridica (cnpj, nome_empresa ) "
+	            + "VALUES (?,?)";
+	    
+	    con.preparar(query);
+	    try
+	    {
+	      con.getPstmt().setInt(1, juridica.getCnpj());
+	      con.getPstmt().setString(2, juridica.getNome_empresa());
+	      
+	      
+	      res = con.executeUpdate();
+	    } catch (SQLException ex)
+	    {
+	    	
+	      Logger.getLogger(pessoa_juridicaDAO.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	    finally
+	    {
+	      con.fechar();
+	      return(res);
+	    }
+	  }
 	@SuppressWarnings("finally")
 	public boolean atualizar(pessoa_juridica pessoa_juridica)
 	  {

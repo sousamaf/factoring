@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.estado;
+import br.edu.heitorpk.beans.estado;
 import br.edu.heitorpk.daos.estadoDAO;
 
 

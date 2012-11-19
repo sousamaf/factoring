@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.status_cheque;
+import br.edu.heitorpk.beans.status_cheque;
 import br.edu.heitorpk.daos.status_chequeDAO;
 
 public class Status_Cheque implements Serializable {

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Factoring</title>
+</h:head>
+<h:body>
+<ui:composition template="/Template/padraotemplate.xhtml">
+	<ui:define name="content">
+	<h:form>
+	<f:view locale="en_US">
+	<h:outputText style="font-size:26px;color:black" value="Cadastro Pessoa Juridica" ></h:outputText><br/>
+	<h:panelGrid columns="2">
+		<h:outputText value="Nome da Empresa:"></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.juridica.pessoa_juridica.nome_empresa}" />	
+		
+		<h:outputText value="Cnpj:"></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.juridica.pessoa_juridica.cnpj}" />
+		
+		<h:outputText value="Email: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.juridica.pessoa.email}" />
+		
+		<h:outputText value="Login: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.juridica.pessoa.login}" />	
+		
+		<h:outputText value="Senha: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.juridica.pessoa.senha}" />
+		
+		<h:outputText value="Estado: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.estado.estado.estado}" />
+		
+		<h:outputText value="Cidade: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.cidade.cidade.nome}" />	
+		
+		<h:outputText value="Cep: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.endereco.endereco.cep}" />
+		
+		<h:outputText value="Quadra: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.endereco.endereco.quadra}" />
+		
+		<h:outputText value="Alameda: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.endereco.endereco.alameda}" />
+		
+		<h:outputText value="Lote: "></h:outputText>	
+		<h:inputText value="#{ControleCadastroPessoaJuridica.endereco.endereco.lote}" />
+		
+		<h:outputText value="Referência: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.endereco.endereco.referencia}" />
+			
+		<h:outputText value="Telefone: "></h:outputText>
+		<h:inputText value="#{ControleCadastroPessoaJuridica.endereco.endereco.telefone}" />
+		
+			<h:commandButton action="#{controleCadastroPessoaFisica.salvar}" value="Salvar" ></h:commandButton>
+			<br/>
+			<h:commandLink value="Inicio" action="pageIndex"></h:commandLink>
+			</h:panelGrid>
+		<!--<f:ajax render="asd" />  -->	
+		
+		 </f:view>
+		 
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

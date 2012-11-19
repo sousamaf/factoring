@@ -9,10 +9,10 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.controle_de_caixa;
-import br.edu.heitorpk.classes.funcionarios;
-import br.edu.heitorpk.classes.pessoa;
-import br.edu.heitorpk.classes.pessoa_fisica;
+import br.edu.heitorpk.beans.controle_de_caixa;
+import br.edu.heitorpk.beans.funcionarios;
+import br.edu.heitorpk.beans.pessoa;
+import br.edu.heitorpk.beans.pessoa_fisica;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class funcionariosDAO implements Serializable{

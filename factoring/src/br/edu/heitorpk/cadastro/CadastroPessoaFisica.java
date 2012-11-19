@@ -7,8 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.edu.heitorpk.classes.pessoa;
-import br.edu.heitorpk.classes.pessoa_fisica;
+import br.edu.heitorpk.beans.pessoa;
+import br.edu.heitorpk.beans.pessoa_fisica;
 import br.edu.heitorpk.daos.pessoa_fisicaDAO;
 
 public class CadastroPessoaFisica implements Serializable{

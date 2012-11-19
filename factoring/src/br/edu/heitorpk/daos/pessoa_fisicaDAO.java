@@ -8,7 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import br.edu.heitorpk.classes.pessoa_fisica;
+
+import br.edu.heitorpk.beans.pessoa_fisica;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class pessoa_fisicaDAO implements Serializable{
@@ -18,7 +19,7 @@ public class pessoa_fisicaDAO implements Serializable{
 	  {
 	    boolean res = false;
 	    Conexao con = new Conexao();
-	    String query = "DELETE FROM pessoa_fisica WHERE id_cliente=?";
+	    String query = "DELETE FROM pessoa_fisica WHERE pessoa_id_cliente=?";
 
 	    con.transacao();
 	    con.preparar(query);
@@ -28,7 +29,7 @@ public class pessoa_fisicaDAO implements Serializable{
 	      if (res = con.executeUpdate())
 	      {
 	       
-	          query = "DELETE FROM pessoa_fisica WHERE id_cliente=?";
+	          query = "DELETE FROM pessoa_fisica WHERE pessoa_id_cliente=?";
 	          con.preparar(query);
 	          con.getPstmt().setInt(1, pessoa_fisica.getId_cliente());
 	          res = con.executeUpdate();
@@ -119,7 +120,7 @@ public class pessoa_fisicaDAO implements Serializable{
 		      con.getPstmt().setInt(9, pessoa_fisica.getId_cliente());
 	      if (res = con.executeUpdate())
 	      {
-	        query = "UPDATE pessoa_fisica SET nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=? WHERE id_cliente=? ";
+	        query = "UPDATE pessoa_fisica SET nome=?, cpf=?, rg=?, sexo=?, data_de_nascimento=? WHERE pessoa_id_cliente=? ";
 	        con.preparar(query);
 	          con.getPstmt().setString(1, pessoa_fisica.getNome());
 		      con.getPstmt().setInt(2, pessoa_fisica.getCpf());
@@ -183,7 +184,7 @@ public class pessoa_fisicaDAO implements Serializable{
 	  {
 	    pessoa_fisica res = null;
 	    Conexao con = new Conexao();
-	    String query = "SELECT  nome, cpf, rg, sexo, data_de_nascimento FROM pessoa_fisica WHERE id_cliente";
+	    String query = "SELECT  nome, cpf, rg, sexo, data_de_nascimento FROM pessoa_fisica WHERE pessoa_id_cliente";
 
 	    con.preparar(query);
 	    try

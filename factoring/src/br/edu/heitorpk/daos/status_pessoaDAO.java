@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.controle_de_caixa;
-import br.edu.heitorpk.classes.status_pessoa;
+import br.edu.heitorpk.beans.controle_de_caixa;
+import br.edu.heitorpk.beans.status_pessoa;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class status_pessoaDAO implements Serializable{

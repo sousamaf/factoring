@@ -9,10 +9,11 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.heitorpk.classes.agendar_horario;
-import br.edu.heitorpk.classes.cidade;
-import br.edu.heitorpk.classes.fiador;
-import br.edu.heitorpk.classes.pessoa;
+import br.edu.heitorpk.beans.agendar_horario;
+import br.edu.heitorpk.beans.cidade;
+import br.edu.heitorpk.beans.fiador;
+import br.edu.heitorpk.beans.funcionarios;
+import br.edu.heitorpk.beans.pessoa;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class agendar_horarioDAO implements Serializable{
@@ -134,4 +135,20 @@ public class agendar_horarioDAO implements Serializable{
 		      return (res);
 		    }
 		  }
+		/*
+		public static void main(String args[]){
+			
+			agendar_horario agenda = new agendar_horario();
+			funcionarios func = new funcionarios();
+			agenda.setId_cliente(2);
+			agenda.setData("2012-12-12");
+			agenda.setHora("2012/12/12");
+			func.setId_funcionario(1);
+			agenda.setId_funcionario(func);
+			
+			agendar_horarioDAO a = new agendar_horarioDAO();
+			a.inserir(agenda);
+			
+		}
+		*/
 }

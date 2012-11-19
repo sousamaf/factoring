@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 
 import br.edu.heitorpk.classes.controle_de_caixa;
 import br.edu.heitorpk.classes.emprestimo;
+import br.edu.heitorpk.classes.movimentacao;
+import br.edu.heitorpk.classes.pessoa;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class emprestimoDAO implements Serializable{
@@ -77,7 +79,6 @@ public class emprestimoDAO implements Serializable{
 		  {
 		    boolean res = false;
 		    Conexao con = new Conexao();
-		    
 		    String query =  "UPDATE m.id_movimentacao, p.id_cliente" +
 		    		"FROM movimentacao.m, pessoa.p" +
 		    		"WHERE m.id_movimentacao,p.id_cliente";
@@ -147,6 +148,22 @@ public class emprestimoDAO implements Serializable{
 		      return (res);
 		    }
 		  }
-		
+		public static void main (String args[]){
+			  emprestimo emprestimo = new emprestimo();
+			  pessoa pessoa = new pessoa();
+			  movimentacao movimentacao = new movimentacao ();
+			  
+			  emprestimo.set
+			  
+			 /* estado estado = new estado();
+			  cid.setNome("Pium");
+			  estado.setId_uf("To");
+			  cid.setId_uf(estado);
+			  */
+			  
+
+			  controle_de_caixaDAO c = new controle_de_caixaDAO();
+			  
+		  }
 		
 }

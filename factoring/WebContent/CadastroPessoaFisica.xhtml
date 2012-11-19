@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html"
 		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
 		xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Factoring</title>
@@ -12,58 +13,61 @@
 	<ui:define name="content">
 	<h:form>
 	<f:view locale="en_US">
+	<h:outputText style="font-size:26px;color:black" value="Cadastro Pessoa Fisica" ></h:outputText><br/>
 	<h:panelGrid columns="2">
 		<h:outputText value="Nome:"></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.nome}" />	
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa_fisica.nome}" />	
 		
 		<h:outputText value="Cpf:"></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.cpf}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa_fisica.cpf}" />
 		
 		<h:outputText value="Rg: "></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.rg}" />	
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa_fisica.rg}" />	
 		
 		<h:outputText value="Sexo: "></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.sexo}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa_fisica.sexo}" />
 		
 		<h:outputText value="Data de Nascimento: "></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa_fisica.data_de_nascimento}" />	
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa_fisica.data_de_nascimento}" />	
 		
 		<h:outputText value="Email: "></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa.email}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa.email}" />
 		
 		<h:outputText value="Login: "></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa.login}" />	
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa.login}" />	
 		
 		<h:outputText value="Senha: "></h:outputText>
-		<h:inputText value="#{controleCadastro.fisica.pessoa.senha}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.fisica.pessoa.senha}" />
 		
 		<h:outputText value="Estado: "></h:outputText>
-		<h:inputText value="#{controleCadastro.estado.estado.estado}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.estado.estado.estado}" />
 		
 		<h:outputText value="Cidade: "></h:outputText>
-		<h:inputText value="#{controleCadastro.cidade.cidade.nome}" />	
+		<h:inputText value="#{ControleCadastroPessoaFisica.cidade.cidade.nome}" />	
 		
 		<h:outputText value="Cep: "></h:outputText>
-		<h:inputText value="#{controleCadastro.endereco.endereco.cep}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.endereco.endereco.cep}" />
 		
 		<h:outputText value="Quadra: "></h:outputText>
-		<h:inputText value="#{controleCadastro.endereco.endereco.quadra}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.endereco.endereco.quadra}" />
 		
 		<h:outputText value="Alameda: "></h:outputText>
-		<h:inputText value="#{controleCadastro.endereco.endereco.alameda}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.endereco.endereco.alameda}" />
 		
 		<h:outputText value="Lote: "></h:outputText>	
-		<h:inputText value="#{controleCadastro.endereco.endereco.lote}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.endereco.endereco.lote}" />
 		
 		<h:outputText value="Referência: "></h:outputText>
-		<h:inputText value="#{controleCadastro.endereco.endereco.referencia}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.endereco.endereco.referencia}" />
 			
 		<h:outputText value="Telefone: "></h:outputText>
-		<h:inputText value="#{controleCadastro.endereco.endereco.telefone}" />
+		<h:inputText value="#{ControleCadastroPessoaFisica.endereco.endereco.telefone}" />
 		
-			<h:commandButton action="#{ControleCadastro.salvar}" value="Salvar" ></h:commandButton>
+			<h:commandButton action="#{controleCadastroPessoaFisica.salvar}" value="Salvar" ></h:commandButton>
+		<br/>
+                  
 			<h:commandLink value="Inicio" action="pageIndex"></h:commandLink>
-			<h:commandLink value="Cadastro Cheque" action="pageCheque"></h:commandLink>
+			
 			</h:panelGrid>
 		<!--<f:ajax render="asd" />  -->	
 		

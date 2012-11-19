@@ -9,13 +9,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import br.edu.heitorpk.classes.controle_de_caixa;
-import br.edu.heitorpk.classes.fiador;
-import br.edu.heitorpk.classes.pessoa;
-import br.edu.heitorpk.classes.pessoa_fisica;
+import br.edu.heitorpk.beans.controle_de_caixa;
+import br.edu.heitorpk.beans.fiador;
+import br.edu.heitorpk.beans.pessoa;
+import br.edu.heitorpk.beans.pessoa_fisica;
 import br.edu.heitorpk.conexao.Conexao;
 
 public class fiadorDAO implements Serializable{
+	/*
+	public static void main(String args[]){
+		fiador fiador = new fiador();
+		pessoa p = new pessoa();
+		p.setId_cliente(1);
+		fiador.setId_cliente(p);
+		//fiador.setId_fiador(3);
+		
+		fiadorDAO f = new fiadorDAO();
+		//f.excluir(fiador);
+		f.inserir(fiador);
+	}
+	*/
 	  @SuppressWarnings("finally")
 	  public boolean excluir(fiador fiador)
 	  {
@@ -28,15 +41,8 @@ public class fiadorDAO implements Serializable{
 	    try
 	    {
 	      con.getPstmt().setInt(1, fiador.getId_fiador());
-	      if (res = con.executeUpdate())
-	      {
-	       
-	          query = "DELETE FROM fiador WHERE id_fiador=?";
-	          con.preparar(query);
-	          con.getPstmt().setInt(1, fiador.getId_fiador());
-	          res = con.executeUpdate();
-	        
-	      }
+	      res = con.executeUpdate();
+	    
 	    } catch (SQLException ex)
 	    {
 	      Logger.getLogger(fiadorDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,7 +58,7 @@ public class fiadorDAO implements Serializable{
 		  {
 		    boolean res = false;
 		    Conexao con = new Conexao();
-		    String query = "INSERT INTO fiador (id_cliente ) "
+		    String query = "INSERT INTO fiador (pessoa_id_cliente ) "
 		            + "VALUES (?)";
 		    
 		    con.preparar(query);
